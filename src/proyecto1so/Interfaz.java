@@ -26,6 +26,7 @@ public class Interfaz extends javax.swing.JFrame {
 
     
     //Booleano para que si ya cargue un archivo no me deje cargar otro
+    //holaaaa 
     boolean cargado;
     
     //Vectores Almacen de cada Producto
