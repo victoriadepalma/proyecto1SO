@@ -17,10 +17,13 @@ public class Proyecto1SO {
     public static void main(String[] args) {
         // TODO code application logic here
         //probando
-        //probando 2
-        //probando 3
         
-       
+        Interfaz i = new Interfaz();
+        
+
+        i.setLocationRelativeTo(null);
+        i.setVisible(true);
     }
+    
     
 }
