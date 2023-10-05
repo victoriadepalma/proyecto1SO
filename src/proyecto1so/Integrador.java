@@ -38,15 +38,15 @@ public class Integrador extends Thread {
              Semaphore sIntegradorGuion, Semaphore sIntegradorNivel, Semaphore sIntegradorSprite, Semaphore sIntegradorSistema, Semaphore sIntegradorDLC,
      int diasEnsam, Semaphore sDespacho) {
          
-        this.sAlmacenMotor = sAlmacenMotor;
-        this.sAlmacenParabrisa = sAlmacenParabrisa;
-        this.sAlmacenRuedas = sAlmacenRuedas;
-        this.sExclusionMotor = sExclusionMotor;
-        this.sExclusionParabrisas = sExclusionParabrisas;
-        this.sExclusionRuedas = sExclusionRuedas;
-        this.sEnsambladorMotor = sEnsambladorMotor;
-        this.sEnsambladorParabrisas = sEnsambladorParabrisas;
-        this.sEnsambladorRuedas = sEnsambladorRuedas;
+//        this.sAlmacenMotor = sAlmacenMotor;
+//        this.sAlmacenParabrisa = sAlmacenParabrisa;
+//        this.sAlmacenRuedas = sAlmacenRuedas;
+//        this.sExclusionMotor = sExclusionMotor;
+//        this.sExclusionParabrisas = sExclusionParabrisas;
+//        this.sExclusionRuedas = sExclusionRuedas;
+//        this.sEnsambladorMotor = sEnsambladorMotor;
+//        this.sEnsambladorParabrisas = sEnsambladorParabrisas;
+//        this.sEnsambladorRuedas = sEnsambladorRuedas;
         this.hired = hired;
         this.diasEnsam = diasEnsam;
         this.sDespacho = sDespacho;

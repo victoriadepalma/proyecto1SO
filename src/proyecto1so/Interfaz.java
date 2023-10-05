@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
  * @author dianasilvadeornelas
  */
 public class Interfaz extends javax.swing.JFrame {
-    Developer[] developerNarrative;
+    Developer[] developerGuiones;
     Developer[] developerNiveles;
     Developer[] developerSprites;
     Developer[] developerSistemas;
@@ -26,7 +26,7 @@ public class Interfaz extends javax.swing.JFrame {
 
     
     //Booleano para que si ya cargue un archivo no me deje cargar otro
-    //holaaaa 
+
     boolean cargado;
     
     //Vectores Almacen de cada Producto
@@ -68,7 +68,7 @@ public class Interfaz extends javax.swing.JFrame {
     static int dlcDrive;
     
 
-    static int diasEntrega = 0;
+    static int diasDespacho = 0;
     static int diaDuracion = 0;
     static int cantVideojuegosEnviados = 0;
     
@@ -104,7 +104,7 @@ public class Interfaz extends javax.swing.JFrame {
     Semaphore integradorDLC;
 
     Semaphore sDespacho;
-    //Semaphore sEmpleado; 
+    Semaphore sEmpleado; 
     
     CargarArchivo c;
     
@@ -167,13 +167,13 @@ public class Interfaz extends javax.swing.JFrame {
     //Inicializa a mi vector de developers. 
     public void inicializarDevelopers(int productores, Developer[] developer, Semaphore sDrive,
             Semaphore sExclusion, Semaphore sIntegrador, int tipoProductor, int diasProd) {
-        for (int i = 0; i < developer.length; i++) {
-            if (i < developers) {
-                developer[i] = new  Developer(sDrive, sExclusion, sIntegrador, tipoDeveloper, diasProd, true);
-                developer[i].start();
-            }
-
-        }
+//        for (int i = 0; i < developer.length; i++) {
+//            if (i < developers) {
+//                developer[i] = new  Developer(sDrive, sExclusion, sIntegrador, tipoDeveloper, diasProd, true);
+//                developer[i].start();
+//            }
+//
+//        }
 
     }
      //Llena mis drives de productos (vectores) con 0s (estan vacios)
@@ -490,12 +490,14 @@ public class Interfaz extends javax.swing.JFrame {
            
 
             this.sDespacho = new Semaphore(1);
-//            this.sEmpleado = new Semaphore(1);
+            this.sEmpleado = new Semaphore(1);
 
-//            this.developerGuiones = new Developer[Interfaz.maxPRuedas];
-//            this.developerNivel = new Productor[Interfaz.maxPMotor];
-//            this.productorParabrisas = new Productor[Interfaz.maxPParabrisas];
-//            this.ensambladores = new Ensamblador[Interfaz.maxEnsambladores];
+//           this.developerGuiones = new Developer[Interfaz.maxDGuiones];
+//           this.developerNiveles = new Developer[Interfaz.maxDNiveles];            
+//           this.developerSprites = new Developer[Interfaz.maxDSprites];
+//           this.developerSistemas = new Developer[maxDSistemas];
+//           this.integradores = new Integrador[Interfaz.maxIntegradores];
+        }
     }//GEN-LAST:event_btnIniciarActionPerformed
 
     
