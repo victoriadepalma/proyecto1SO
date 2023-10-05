@@ -15,11 +15,13 @@ public class Developer extends Thread {
     Semaphore sExclusion;
     Semaphore sIntegrador;
     int tipoDeveloper;
-    int dayDuration;
     int diasProduccion;
+    
     
     //boolean hired;
     
 }
     
+
+
 
