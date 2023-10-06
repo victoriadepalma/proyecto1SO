@@ -4,6 +4,17 @@
  */
 package proyecto1so;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author dianasilvadeornelas
@@ -13,8 +24,20 @@ public class CargarArchivo extends javax.swing.JFrame {
     /**
      * Creates new form CargarArchivo
      */
-     int auxDuracionDia;
-    static int auxDiasEntrega;
+    int auxDuracionDia;
+    static int auxDiasDespacho;
+    
+    int auxDriveMaxGuiones;
+    int auxDriveMaxNiveles;
+    int auxDriveMaxSprites;
+    int auxDriveMaxSistemas;
+    int auxDriveMaxDLC;
+    
+    int auxMaxDevelopersGuiones;
+    int auxMaxDevelopersNiveles;
+    int auxMaxDevelopersSprites;
+    int auxMaxDevelopersSistemas;
+    int auxMaxDevelopersDLC;
     
     int auxDevelopersGuiones;
     int auxDevelopersNiveles;
@@ -23,10 +46,18 @@ public class CargarArchivo extends javax.swing.JFrame {
     int auxDevelopersDLC;
    
     int auxIntegradores;
+    
+    JFileChooser seleccionado = new JFileChooser();
+    File archivo;
+    Archivo a = new Archivo();
 
     public CargarArchivo() {
         initComponents();
+        this.setResizable(false);
+        this.setTitle("Archivos");
     }
+
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -37,21 +68,195 @@ public class CargarArchivo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        Abrir = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Abrir.setText("Abrir Archivo");
+        Abrir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AbrirActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Abrir, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, -1, -1));
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 40, 140, 210));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void AbrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AbrirActionPerformed
+        // TODO add your handling code here:
+        
+        if (seleccionado.showDialog(this, "Abrir Archivo") == JFileChooser.APPROVE_OPTION) {
+
+            archivo = seleccionado.getSelectedFile();
+            if (archivo.canRead()) {
+                if (archivo.getName().endsWith("txt")) {
+
+                    String contenido = a.Abrir(archivo);
+                    jTextArea1.setText(contenido);
+
+                    try {
+
+                        BufferedReader bf = new BufferedReader(new FileReader(seleccionado.getSelectedFile().toString()));
+                        String aux;
+                        String bfRead = bf.readLine();
+                        aux = bfRead; //linea
+                        
+                        while (aux != null) {
+
+                            if (aux.equalsIgnoreCase("Developers Guiones")) {
+                                do {
+                                    aux = bf.readLine();
+                                    if (!aux.equalsIgnoreCase("Developers Niveles")) {
+                                         
+                                        auxDevelopersGuiones = Integer.parseInt(aux);
+                                        Interfaz.developersGuiones = this.auxDevelopersGuiones;
+                                        Interfaz.txtGuiones.setText(Integer.toString(Interfaz.developersGuiones));
+                                        auxDriveMaxGuiones = 25; 
+                                        Interfaz.txtMaxDriveGuiones.setText(Integer.toString(this.auxDriveMaxGuiones));
+                                        
+
+                                    }
+
+                                } while (!aux.equalsIgnoreCase("Developers Niveles"));
+
+                            }
+                                if (aux.equalsIgnoreCase("Developers Niveles")) {
+                                do {
+
+                                    aux = bf.readLine();
+                                    if (!aux.equalsIgnoreCase("Developers Sprites")) {
+                                     
+                                        auxDevelopersNiveles = Integer.parseInt(aux);
+                                        Interfaz.developersNiveles = this.auxDevelopersNiveles;
+                                        Interfaz.txtNiveles.setText(Integer.toString(Interfaz.developersNiveles));
+                                        auxDriveMaxNiveles = 20; 
+                                        Interfaz.txtMaxDriveNiveles.setText(Integer.toString(this.auxDriveMaxNiveles));
+
+                                    }
+
+                                } while (!aux.equalsIgnoreCase("Developers Sprites"));
+
+                            }
+                                if (aux.equalsIgnoreCase("Developers Sprites")) {
+                                do {
+                                    aux = bf.readLine();
+                                    if (!aux.equalsIgnoreCase("Developers Sistemas")) {
+                                        auxDevelopersSprites = Integer.parseInt(aux);
+                                        Interfaz.developersSprites = this.auxDevelopersSprites;
+                                        Interfaz.txtSprites.setText(Integer.toString(Interfaz.developersSprites));
+                                        auxDriveMaxSprites = 55; 
+                                        Interfaz.txtMaxDriveSprites.setText(Integer.toString(this.auxDriveMaxSprites));
+                                    }
+                                } while (!aux.equalsIgnoreCase("Developers Sistemas"));
+  
+                            }
+                                if (aux.equalsIgnoreCase("Developers Sistemas")) {
+                                do {
+                                    aux = bf.readLine();
+                                    if (!aux.equalsIgnoreCase("Developers DLC")) {
+                                        auxDevelopersSistemas = Integer.parseInt(aux);
+                                        Interfaz.developersSistemas = this.auxDevelopersSistemas;
+                                        Interfaz.txtSistemas.setText(Integer.toString(Interfaz.developersSistemas));
+                                        auxDriveMaxSistemas = 35; 
+                                        Interfaz.txtMaxDriveSistemas.setText(Integer.toString(this.auxDriveMaxSistemas));
+                                    }
+                                } while (!aux.equalsIgnoreCase("Developers DLC"));
+                                 
+                            }
+                                 if (aux.equalsIgnoreCase("Developers DLC")) {
+                                do {
+                                    aux = bf.readLine();
+                                    if (!aux.equalsIgnoreCase("Duracion dia")) {
+                                        auxDevelopersDLC = Integer.parseInt(aux);
+                                        Interfaz.developersDLC = this.auxDevelopersDLC;
+                                        Interfaz.txtDLC.setText(Integer.toString(Interfaz.developersDLC));
+                                        auxDriveMaxDLC = 10; 
+                                        Interfaz.txtMaxDriveDLC.setText(Integer.toString(this.auxDriveMaxDLC));
+                                    }
+                                } while (!aux.equalsIgnoreCase("Duracion dia"));
+                            }
+                                 if (aux.equalsIgnoreCase("Duracion Dia")) {
+                                do {
+                                    aux = bf.readLine();
+                                    if (!"Dias para Despacho".equalsIgnoreCase(aux)) {
+                                     
+                                        auxDuracionDia = Integer.parseInt(aux);
+                                        Interfaz.diaDuracion = 1000 * this.auxDuracionDia;
+                                    }
+                                } while (!"Dias para Despacho".equalsIgnoreCase(aux));
+                            }
+                                 
+                                 if (aux.equalsIgnoreCase("Dias para Despacho")) {
+                                do {
+                                    aux = bf.readLine();
+                                    if (!"Integradores".equalsIgnoreCase(aux)) {
+                                      
+                                        auxDiasDespacho = Integer.parseInt(aux);
+                                        Interfaz.diasDespacho = CargarArchivo.auxDiasDespacho;
+
+                                        Interfaz.txtDiasDespacho.setText(Integer.toString(Interfaz.diasDespacho));
+                                    }
+                                } while (!"Integradores".equalsIgnoreCase(aux));
+                            }
+                                 if (aux.equalsIgnoreCase("Integradores")) {
+                                do {
+                                    aux = bf.readLine();
+                                    if (aux != null) {
+                                       
+                                        auxIntegradores = Integer.parseInt(aux);
+                                        Interfaz.integrador = this.auxIntegradores;
+                                        Interfaz.txtCantIntegradores.setText(Integer.toString(Interfaz.integrador));
+
+                                     }
+                                } while (aux != null);
+                            }
+                            aux = bf.readLine();
+                        }
+
+                    } catch (IOException | NumberFormatException e) {
+
+                        JOptionPane.showMessageDialog(this, "No se pudo leer el archivo. Vuelva a Intentarlo");
+                    }
+
+                } else {
+                    JOptionPane.showMessageDialog(this, "Por favor seleccione un archivo de texto");
+                }
+                
+                if ((auxIntegradores + auxDevelopersGuiones + auxDevelopersNiveles + auxDevelopersSprites + auxDevelopersSistemas + auxDevelopersDLC) >= 16){
+                    JOptionPane.showMessageDialog(null, "Error: La suma es mayor o igual a 16", "Error", JOptionPane.ERROR_MESSAGE);
+                    
+                }
+
+            }
+
+        }
+
+         
+        
+    }//GEN-LAST:event_AbrirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -89,5 +294,9 @@ public class CargarArchivo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Abrir;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }

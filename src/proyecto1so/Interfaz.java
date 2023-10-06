@@ -9,6 +9,10 @@ import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+
 
 /**
  *
@@ -24,6 +28,12 @@ public class Interfaz extends javax.swing.JFrame {
     Empleado projectManager;
     Empleado director;
 
+    
+//    private static final int LIMITE_TOTAL = 16;
+//    private static final int NUM_CAMPOS = 5;
+//
+//    private JTextField[] textFields;
+//    private JLabel errorLabel;
     
     //Booleano para que si ya cargue un archivo no me deje cargar otro
 
@@ -119,6 +129,26 @@ public class Interfaz extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         
+//        JFrame frame = new JFrame("Interfaz Ejemplo");
+//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        frame.setLayout(new GridLayout(NUM_CAMPOS + 1, 2));
+//
+//        textFields = new JTextField[NUM_CAMPOS];
+//        for (int i = 0; i < NUM_CAMPOS; i++) {
+//            textFields[i] = new JTextField(10);
+//            textFields[i].addActionListener(new TextFieldListener());
+//            frame.add(new JLabel("Cantidad " + (i + 1)));
+//            frame.add(textFields[i]);
+//        }
+//
+//        errorLabel = new JLabel();
+//        errorLabel.setForeground(Color.RED);
+//        frame.add(new JLabel());
+//        frame.add(errorLabel);
+//
+//        frame.pack();
+//        frame.setVisible(true);
+   
         
         Interfaz.guionesDrive = 0;
         Interfaz.nivelesDrive = 0;
@@ -137,7 +167,7 @@ public class Interfaz extends javax.swing.JFrame {
         Interfaz.developersDLC = 0;
         
         
-//        Interfaz.integrador = 0;
+        Interfaz.integrador = 0;
         
         this.cargado = false;
 
@@ -155,11 +185,15 @@ public class Interfaz extends javax.swing.JFrame {
         
         this.c = new CargarArchivo();
         
-        Interfaz.txtGuiones.setText(Integer.toString(Interfaz.developersGuiones));
+  
         Interfaz.txtNiveles.setText(Integer.toString(Interfaz.developersNiveles));
         Interfaz.txtSprites.setText(Integer.toString(Interfaz.developersSprites));
         Interfaz.txtSistemas.setText(Integer.toString(Interfaz.developersNiveles));
         Interfaz.txtDLC.setText(Integer.toString(Interfaz.developersSprites));
+        
+        Interfaz.txtCantIntegradores.setText(Integer.toString(Interfaz.integrador));
+        
+        Interfaz.txtDiasDespacho.setText(Integer.toString(Interfaz.diasDespacho));
         
         
     }
@@ -251,7 +285,7 @@ public class Interfaz extends javax.swing.JFrame {
         jTextField15 = new javax.swing.JTextField();
         jTextField16 = new javax.swing.JTextField();
         jTextField17 = new javax.swing.JTextField();
-        jTextField18 = new javax.swing.JTextField();
+        txtDiasDespacho = new javax.swing.JTextField();
         txtEstadoPM = new javax.swing.JTextField();
         txtEstadoDirector = new javax.swing.JTextField();
         jTextField21 = new javax.swing.JTextField();
@@ -260,6 +294,14 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         txtCantIntegradores = new javax.swing.JTextField();
         btnIniciar = new javax.swing.JToggleButton();
+        btnCargar = new javax.swing.JButton();
+        jLabel26 = new javax.swing.JLabel();
+        txtMaxDriveGuiones = new javax.swing.JTextField();
+        txtMaxDriveNiveles = new javax.swing.JTextField();
+        txtMaxDriveSprites = new javax.swing.JTextField();
+        txtMaxDriveSistemas = new javax.swing.JTextField();
+        txtMaxDriveDLC = new javax.swing.JTextField();
+        jSpinner1 = new javax.swing.JSpinner();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -291,7 +333,7 @@ public class Interfaz extends javax.swing.JFrame {
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, -1, -1));
 
         jLabel10.setText("Utilidad");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 140, -1, -1));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 130, -1, -1));
 
         jLabel11.setText("Guiones");
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 220, -1, -1));
@@ -324,10 +366,10 @@ public class Interfaz extends javax.swing.JFrame {
         jPanel1.add(txtCantDLC, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 340, -1, -1));
 
         jLabel17.setText("Que hace director");
-        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 240, -1, -1));
+        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 230, -1, -1));
 
         jLabel18.setText("Que hace PM");
-        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 210, -1, -1));
+        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 200, -1, -1));
 
         jLabel19.setText("Dias que faltan para la entrega");
         jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 140, -1, -1));
@@ -340,33 +382,22 @@ public class Interfaz extends javax.swing.JFrame {
         jPanel1.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 90, -1, -1));
 
         jLabel23.setText("Cantidad faltas PM");
-        jPanel1.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 280, -1, -1));
+        jPanel1.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 270, -1, -1));
 
         jLabel24.setText("Dinero descontado PM");
-        jPanel1.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 330, -1, -1));
+        jPanel1.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 320, -1, -1));
+        jPanel1.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 50, 30));
 
-        jTextField7.setText("jTextField7");
-        jPanel1.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, -1, -1));
-
-        txtGuiones.setText("jTextField8");
         txtGuiones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtGuionesActionPerformed(evt);
             }
         });
-        jPanel1.add(txtGuiones, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, -1, -1));
-
-        txtNiveles.setText("jTextField9");
-        jPanel1.add(txtNiveles, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, -1, -1));
-
-        txtSprites.setText("jTextField10");
-        jPanel1.add(txtSprites, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 200, -1, -1));
-
-        txtSistemas.setText("jTextField11");
-        jPanel1.add(txtSistemas, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 230, -1, -1));
-
-        txtDLC.setText("jTextField12");
-        jPanel1.add(txtDLC, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 260, -1, -1));
+        jPanel1.add(txtGuiones, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, 40, 30));
+        jPanel1.add(txtNiveles, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, 40, -1));
+        jPanel1.add(txtSprites, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 200, 40, 30));
+        jPanel1.add(txtSistemas, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 230, 60, 30));
+        jPanel1.add(txtDLC, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 260, 50, -1));
 
         jTextField13.setText("jTextField13");
         jTextField13.addActionListener(new java.awt.event.ActionListener() {
@@ -393,29 +424,32 @@ public class Interfaz extends javax.swing.JFrame {
         jTextField17.setText("jTextField17");
         jPanel1.add(jTextField17, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 100, -1, -1));
 
-        jTextField18.setText("jTextField18");
-        jPanel1.add(jTextField18, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 140, -1, -1));
+        txtDiasDespacho.setText("jTextField18");
+        txtDiasDespacho.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDiasDespachoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtDiasDespacho, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 140, -1, -1));
 
         txtEstadoPM.setText("jTextField19");
-        jPanel1.add(txtEstadoPM, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 200, -1, -1));
+        jPanel1.add(txtEstadoPM, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 200, -1, -1));
 
         txtEstadoDirector.setText("jTextField20");
-        jPanel1.add(txtEstadoDirector, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 230, -1, -1));
+        jPanel1.add(txtEstadoDirector, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 230, -1, -1));
 
         jTextField21.setText("jTextField21");
-        jPanel1.add(jTextField21, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 270, -1, -1));
+        jPanel1.add(jTextField21, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 270, -1, -1));
 
         jTextField22.setText("jTextField22");
-        jPanel1.add(jTextField22, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 320, -1, -1));
+        jPanel1.add(jTextField22, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 320, -1, -1));
 
         jLabel25.setText("DLC");
         jPanel1.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 350, -1, -1));
 
         jLabel16.setText("Integradores");
         jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, -1, -1));
-
-        txtCantIntegradores.setText("jTextField1");
-        jPanel1.add(txtCantIntegradores, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 340, -1, -1));
+        jPanel1.add(txtCantIntegradores, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 340, 40, -1));
 
         btnIniciar.setText("INICIAR");
         btnIniciar.addActionListener(new java.awt.event.ActionListener() {
@@ -425,15 +459,47 @@ public class Interfaz extends javax.swing.JFrame {
         });
         jPanel1.add(btnIniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, -1, -1));
 
+        btnCargar.setText("CARGAR");
+        btnCargar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCargarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnCargar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, -1, -1));
+
+        jLabel26.setText("Maximos en Drive");
+        jPanel1.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 180, -1, -1));
+
+        txtMaxDriveGuiones.setText("jTextField1");
+        txtMaxDriveGuiones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMaxDriveGuionesActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtMaxDriveGuiones, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 210, -1, -1));
+
+        txtMaxDriveNiveles.setText("jTextField2");
+        jPanel1.add(txtMaxDriveNiveles, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 240, -1, -1));
+
+        txtMaxDriveSprites.setText("jTextField3");
+        jPanel1.add(txtMaxDriveSprites, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 280, -1, -1));
+
+        txtMaxDriveSistemas.setText("jTextField4");
+        jPanel1.add(txtMaxDriveSistemas, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 310, -1, -1));
+
+        txtMaxDriveDLC.setText("jTextField5");
+        jPanel1.add(txtMaxDriveDLC, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 340, -1, -1));
+        jPanel1.add(jSpinner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 80, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 809, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 454, Short.MAX_VALUE)
         );
 
         pack();
@@ -500,7 +566,45 @@ public class Interfaz extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnIniciarActionPerformed
 
-    
+    private void txtDiasDespachoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDiasDespachoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDiasDespachoActionPerformed
+
+    private void btnCargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarActionPerformed
+        if (this.cargado == false) {
+            this.c.setVisible(true);
+            this.c.setLocationRelativeTo(null);
+            this.cargado = true;
+        } else {
+            JOptionPane.showMessageDialog(this, "Ya existe un archivo cargado");
+        }
+
+                 // TODO add your handling code here:
+    }//GEN-LAST:event_btnCargarActionPerformed
+
+    private void txtMaxDriveGuionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaxDriveGuionesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMaxDriveGuionesActionPerformed
+
+//     private class TextFieldListener implements ActionListener {
+//        @Override
+//        public void actionPerformed(ActionEvent e) {
+//            int suma = 0;
+//            for (Interfaz.JTextField textField : textFields) {
+//                try {
+//                    suma += Integer.parseInt(textField.getText());
+//                } catch (NumberFormatException ex) {
+//                    ex.printStackTrace();
+//                }
+//            }
+//
+//            if (suma > LIMITE_TOTAL) {
+//                errorLabel.setText("La suma no puede superar " + LIMITE_TOTAL);
+//            } else {
+//                errorLabel.setText("");
+//            }
+//        }
+//    }
     
     
     /**
@@ -539,6 +643,7 @@ public class Interfaz extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCargar;
     private javax.swing.JToggleButton btnIniciar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -558,6 +663,7 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -566,12 +672,12 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTextField jTextField13;
     private javax.swing.JTextField jTextField14;
     private javax.swing.JTextField jTextField15;
     private javax.swing.JTextField jTextField16;
     private javax.swing.JTextField jTextField17;
-    private javax.swing.JTextField jTextField18;
     private javax.swing.JTextField jTextField21;
     private javax.swing.JTextField jTextField22;
     private javax.swing.JTextField jTextField7;
@@ -581,9 +687,15 @@ public class Interfaz extends javax.swing.JFrame {
     public static javax.swing.JTextField txtCantNiveles;
     public static javax.swing.JTextField txtCantSistemas;
     public static javax.swing.JTextField txtDLC;
+    public static javax.swing.JTextField txtDiasDespacho;
     private javax.swing.JTextField txtEstadoDirector;
     private javax.swing.JTextField txtEstadoPM;
     public static javax.swing.JTextField txtGuiones;
+    public static javax.swing.JTextField txtMaxDriveDLC;
+    public static javax.swing.JTextField txtMaxDriveGuiones;
+    public static javax.swing.JTextField txtMaxDriveNiveles;
+    public static javax.swing.JTextField txtMaxDriveSistemas;
+    public static javax.swing.JTextField txtMaxDriveSprites;
     public static javax.swing.JTextField txtNiveles;
     public static javax.swing.JTextField txtSCantprites;
     public static javax.swing.JTextField txtSistemas;
