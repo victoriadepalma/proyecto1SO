@@ -28,11 +28,11 @@ public class Interfaz extends javax.swing.JFrame {
     //Booleano para que si ya cargue un archivo no me deje cargar otro
     boolean cargado;
     
-    //Vectores Almacen de cada Producto
+    //Vectores Drive de cada Producto
     static int[] guiones;
     static int[] niveles;
     static int[] sprites;
-    static int[] sitemas;
+    static int[] sistemas;
     static int[] dlc;
   
     
@@ -60,11 +60,11 @@ public class Interfaz extends javax.swing.JFrame {
     static int cantDLC = 0;
     
     //Tamaño del almacen (vector)
-    static int guionesAlmacen;
-    static int nivelesAlmacen;
-    static int spritesAlmacen;
-    static int sistemasAlmacen;
-    static int dlcAlmacen;
+    static int guionesDrive;
+    static int nivelesDrive;
+    static int spritesDrive;
+    static int sistemasDrive;
+    static int dlcDrive;
     
 
     static int diasEntrega = 0;
@@ -81,11 +81,11 @@ public class Interfaz extends javax.swing.JFrame {
     
     
      //Semaforos de los developers
-    Semaphore almacenGuiones;
-    Semaphore almacenNiveles;
-    Semaphore almacenSprites;
-    Semaphore almacenSistemas;
-    Semaphore almacenDLC;
+    Semaphore driveGuiones;
+    Semaphore driveNiveles;
+    Semaphore driveSprites;
+    Semaphore driveSistemas;
+    Semaphore driveDLC;
     
 
     //Semaforo de exclusion mutua
@@ -104,6 +104,11 @@ public class Interfaz extends javax.swing.JFrame {
 
     Semaphore sDespacho;
     //Semaphore sEmpleado; 
+   
+    static int sueldoTotalPM=0;
+    static int sueldoTotalDirector=0;
+    static int descuentoPM=0;
+    
     
     CargarArchivo c;
     
