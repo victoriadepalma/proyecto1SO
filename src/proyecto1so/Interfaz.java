@@ -29,11 +29,7 @@ public class Interfaz extends javax.swing.JFrame {
     Empleado director;
 
     
-//    private static final int LIMITE_TOTAL = 16;
-//    private static final int NUM_CAMPOS = 5;
-//
-//    private JTextField[] textFields;
-//    private JLabel errorLabel;
+
     
     //Booleano para que si ya cargue un archivo no me deje cargar otro
 
@@ -129,25 +125,7 @@ public class Interfaz extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         
-//        JFrame frame = new JFrame("Interfaz Ejemplo");
-//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        frame.setLayout(new GridLayout(NUM_CAMPOS + 1, 2));
-//
-//        textFields = new JTextField[NUM_CAMPOS];
-//        for (int i = 0; i < NUM_CAMPOS; i++) {
-//            textFields[i] = new JTextField(10);
-//            textFields[i].addActionListener(new TextFieldListener());
-//            frame.add(new JLabel("Cantidad " + (i + 1)));
-//            frame.add(textFields[i]);
-//        }
-//
-//        errorLabel = new JLabel();
-//        errorLabel.setForeground(Color.RED);
-//        frame.add(new JLabel());
-//        frame.add(errorLabel);
-//
-//        frame.pack();
-//        frame.setVisible(true);
+
    
         
         Interfaz.guionesDrive = 0;
@@ -301,7 +279,6 @@ public class Interfaz extends javax.swing.JFrame {
         txtMaxDriveSprites = new javax.swing.JTextField();
         txtMaxDriveSistemas = new javax.swing.JTextField();
         txtMaxDriveDLC = new javax.swing.JTextField();
-        jSpinner1 = new javax.swing.JSpinner();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -386,6 +363,12 @@ public class Interfaz extends javax.swing.JFrame {
 
         jLabel24.setText("Dinero descontado PM");
         jPanel1.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 320, -1, -1));
+
+        jTextField7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField7ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 50, 30));
 
         txtGuiones.addActionListener(new java.awt.event.ActionListener() {
@@ -413,7 +396,7 @@ public class Interfaz extends javax.swing.JFrame {
                 jTextField14ActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField14, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 60, 60, -1));
+        jPanel1.add(jTextField14, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 50, 60, -1));
 
         jTextField15.setText("jTextField15");
         jPanel1.add(jTextField15, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 130, 60, 30));
@@ -489,7 +472,6 @@ public class Interfaz extends javax.swing.JFrame {
 
         txtMaxDriveDLC.setText("jTextField5");
         jPanel1.add(txtMaxDriveDLC, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 340, -1, -1));
-        jPanel1.add(jSpinner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 80, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -586,25 +568,11 @@ public class Interfaz extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMaxDriveGuionesActionPerformed
 
-//     private class TextFieldListener implements ActionListener {
-//        @Override
-//        public void actionPerformed(ActionEvent e) {
-//            int suma = 0;
-//            for (Interfaz.JTextField textField : textFields) {
-//                try {
-//                    suma += Integer.parseInt(textField.getText());
-//                } catch (NumberFormatException ex) {
-//                    ex.printStackTrace();
-//                }
-//            }
-//
-//            if (suma > LIMITE_TOTAL) {
-//                errorLabel.setText("La suma no puede superar " + LIMITE_TOTAL);
-//            } else {
-//                errorLabel.setText("");
-//            }
-//        }
-//    }
+    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField7ActionPerformed
+
+   
     
     
     /**
@@ -672,7 +640,6 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTextField jTextField13;
     private javax.swing.JTextField jTextField14;
     private javax.swing.JTextField jTextField15;
