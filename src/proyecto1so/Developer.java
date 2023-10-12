@@ -38,12 +38,12 @@ public class Developer extends Thread {
                 //Acquire del semaforo del Drive
               
                 this.sDrive.acquire();
-                System.out.println("En semaforo drive: "+this.sDrive.availablePermits());
+//                System.out.println("En semaforo drive: "+this.sDrive.availablePermits());
                 
             
                 //tiempo en que va a durar el 'hilo ejecutandose'
                
-                Thread.sleep((long) ((500 * this.diasProduccion)/this.cantProduccion));
+                Thread.sleep((long) ((Interfaz.diaDuracion * this.diasProduccion)/this.cantProduccion));
                  
               
                 //Acquire del semaforo de Exclusion
@@ -61,7 +61,7 @@ public class Developer extends Thread {
                         Interfaz.guionesP=(Interfaz.guionesP+1)%Interfaz.guiones.length;
                         Interfaz.txtCantGuiones.setText(Integer.toString(Interfaz.cantGuiones));
                         if(this.tipoDeveloper==1){
-                      System.out.println("Available drive guion : "+this.sDrive.availablePermits());
+//                      System.out.println("Available drive guion : "+this.sDrive.availablePermits());
                         }
                         //falta unirlo con la interfaz luego
                         break;
@@ -74,7 +74,7 @@ public class Developer extends Thread {
                         Interfaz.nivelesP=(Interfaz.nivelesP+1)%Interfaz.niveles.length;
                         Interfaz.txtCantNiveles.setText(Integer.toString(Interfaz.cantNiveles));
                         if(this.tipoDeveloper==2){
-                      System.out.println("Available drive nivel : "+this.sDrive.availablePermits());
+//                      System.out.println("Available drive nivel : "+this.sDrive.availablePermits());
                         }
                         break;
                         
@@ -89,7 +89,7 @@ public class Developer extends Thread {
 //                        System.out.println("posp: "+Interfaz.spritesP);
 //                        this.print();
                         if(this.tipoDeveloper==3){
-                      System.out.println("Available drive sprites : "+this.sDrive.availablePermits());
+//                      System.out.println("Available drive sprites : "+this.sDrive.availablePermits());
                         }
                         break;
                         
@@ -103,7 +103,7 @@ public class Developer extends Thread {
                         Interfaz.sistemasP=(Interfaz.sistemasP+1)%Interfaz.sistemas.length;
                         Interfaz.txtCantSistemas.setText(Integer.toString(Interfaz.cantSistemas));
                          if(this.tipoDeveloper==4){
-                      System.out.println("Available drive sistema : "+this.sDrive.availablePermits());
+//                      System.out.println("Available drive sistema : "+this.sDrive.availablePermits());
                         }
                         break;
                         

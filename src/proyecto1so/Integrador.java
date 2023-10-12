@@ -41,6 +41,8 @@ public class Integrador extends Thread {
     int cantDLCEnsamblar;
     boolean hired;
     int contVideos;
+    int gananciasVideojuegoEstandar;
+    int gananciasVideojuegoDLC;
 
     public Integrador(Semaphore sDriveGuion, Semaphore sDriveNivel, Semaphore sDriveSprite, Semaphore sDriveSistema, Semaphore sDriveDLC, Semaphore sExclusionGuion, Semaphore sExclusionNivel, Semaphore sExclusionSprite, Semaphore sExclusionSistema, Semaphore sExclusionDLC, Semaphore sIntegradorGuiones, Semaphore sIntegradorNivel, Semaphore sIntegradorSprite, Semaphore sIntegradorSistema, Semaphore sIntegradorDLC, int diasEnsam, Semaphore sDespacho, String empresa, boolean hired) {
         this.sDriveGuion = sDriveGuion;
@@ -69,13 +71,14 @@ public class Integrador extends Thread {
             this.cantSpritesEnsamblar = 4;
             this.cantSistemasEnsamblar = 4;
             this.cantDLCEnsamblar = 2;
+   
         } else {
             this.cantGuionesEnsamblar = 1;
             this.cantNivelesEnsamblar = 2;
             this.cantSpritesEnsamblar = 6;
             this.cantSistemasEnsamblar = 5;
             this.cantDLCEnsamblar = 1;
-
+         
         }
 
     }
@@ -83,9 +86,7 @@ public class Integrador extends Thread {
     public void run() {
         while (this.hired) {
             try {
-                System.out.println("Available Driver de sprite: " + this.sDriveSprite.availablePermits());
-
-                System.out.println("Available Integrador de sprite: " + this.sIntegradorSprite.availablePermits());
+              
 
                 if (this.contVideos == 5) {
                     this.sExclusionDLC.acquire();
@@ -146,14 +147,14 @@ public class Integrador extends Thread {
                 if (created) {
 
                     //System.out.println("Contador videojuegos: " + this.contVideos);
-                    Thread.sleep(500 * this.diasEnsam);
+                    Thread.sleep(Interfaz.diaDuracion * this.diasEnsam);
 
                     this.sDespacho.acquire();
                     //Despacha el video juego
                     if (this.contVideos == 5) {
                         Interfaz.cantVideojuegosDLC = Interfaz.cantVideojuegosDLC + 1;
                         Interfaz.txtVideojuegosDLCListos.setText(Integer.toString(Interfaz.cantVideojuegosDLC));
-                        System.out.println("Video juego DLC" + Interfaz.cantVideojuegosDLC);
+//                        System.out.println("Video juego DLC" + Interfaz.cantVideojuegosDLC);
                     } else {
                         Interfaz.cantVideojuegos = Interfaz.cantVideojuegos + 1;
                         Interfaz.txtVideojuegosEstandarListos.setText(Integer.toString(Interfaz.cantVideojuegos));

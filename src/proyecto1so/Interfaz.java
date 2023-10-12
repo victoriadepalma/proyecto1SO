@@ -89,8 +89,24 @@ public class Interfaz extends javax.swing.JFrame {
     
     //sueldos
     
+        static int sueldoDeveloperGuiones=0;
+    static int sueldoDeveloperNiveles=0;
+    static int sueldoDeveloperSprites=0;
+    static int sueldoDeveloperSistemas=0;
+    static int sueldoDeveloperDLC=0;
+    static int sueldoIntegrador=0;
     static int sueldoTotalPM=0;
+    static int sueldoDirector=0;
+    //descuento PM
     static int descuentoPM=0;
+    static int contadorFaltasPM=0;
+    
+    //ganancia,costo y utilidad empresa
+    
+    static int gananciaEmpresa=0;
+    static int costoEmpresa=0;
+    static int utilidadEmpresa = 0; 
+    //static int utilidadEmpresa=gananciaEmpresa-costoEmpresa;
     
 
     
@@ -175,23 +191,35 @@ public class Interfaz extends javax.swing.JFrame {
         
         this.c = new CargarArchivo();
         
-  
+        Interfaz.txtGuiones.setText(Integer.toString(Interfaz.developersGuiones));
         Interfaz.txtNiveles.setText(Integer.toString(Interfaz.developersNiveles));
         Interfaz.txtSprites.setText(Integer.toString(Interfaz.developersSprites));
         Interfaz.txtSistemas.setText(Integer.toString(Interfaz.developersNiveles));
         Interfaz.txtDLC.setText(Integer.toString(Interfaz.developersSprites));
         Interfaz.txtVideojuegosEstandarListos.setText(Integer.toString(Interfaz.cantVideojuegos));
+        Interfaz.txtVideojuegosDLCListos.setText(Integer.toString(Interfaz.cantVideojuegosDLC));
         Interfaz.txtEstadoDirector.setText("Trabajando");
         Interfaz.txtEstadoPM.setText("Viendo streams");
+        Interfaz.txtDescuentoPM.setText(Integer.toString(Interfaz.descuentoPM));
+        Interfaz.txtGananciaEmpresa.setText(Integer.toString(Interfaz.gananciaEmpresa));
+        Interfaz.txtCostoEmpresa.setText(Integer.toString(Interfaz.costoEmpresa));
+        //Interfaz.txtUtilidadEmpresa.setText(Integer.toString(Interfaz.utilidadEmpresa));
+        Interfaz.txtCantFaltasPM.setText(Integer.toString(Interfaz.contadorFaltasPM));
+      
+        
+        
         
         Interfaz.txtCantIntegradores.setText(Integer.toString(Interfaz.integrador));
         
         Interfaz.txtDiasDespacho.setText(Integer.toString(Interfaz.diasDespacho));
         
+        Interfaz.txtContadorDias.setText(Integer.toString(0));
         
         
     }
 
+    
+    
     //Inicializa a mi vector de developers. 
     public void inicializarDevelopers(int developers, Developer[] developer, Semaphore sDrive,
             Semaphore sExclusion, Semaphore sIntegrador,  int diasProd,int cant,int tipoDeveloper) {
@@ -327,16 +355,16 @@ public class Interfaz extends javax.swing.JFrame {
         txtSprites = new javax.swing.JTextField();
         txtSistemas = new javax.swing.JTextField();
         txtDLC = new javax.swing.JTextField();
-        jTextField13 = new javax.swing.JTextField();
-        jTextField14 = new javax.swing.JTextField();
-        jTextField15 = new javax.swing.JTextField();
+        txtCostoEmpresa = new javax.swing.JTextField();
+        txtGananciaEmpresa = new javax.swing.JTextField();
+        txtUtilidadEmpresa = new javax.swing.JTextField();
         txtVideojuegosEstandarListos = new javax.swing.JTextField();
         txtVideojuegosDLCListos = new javax.swing.JTextField();
         txtDiasDespacho = new javax.swing.JTextField();
         txtEstadoPM = new javax.swing.JTextField();
         txtEstadoDirector = new javax.swing.JTextField();
-        jTextField21 = new javax.swing.JTextField();
-        jTextField22 = new javax.swing.JTextField();
+        txtCantFaltasPM = new javax.swing.JTextField();
+        txtDescuentoPM = new javax.swing.JTextField();
         jLabel25 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         txtCantIntegradores = new javax.swing.JTextField();
@@ -348,6 +376,8 @@ public class Interfaz extends javax.swing.JFrame {
         txtMaxDriveSprites = new javax.swing.JTextField();
         txtMaxDriveSistemas = new javax.swing.JTextField();
         txtMaxDriveDLC = new javax.swing.JTextField();
+        txtContadorDias = new javax.swing.JTextField();
+        jLabel27 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -373,13 +403,13 @@ public class Interfaz extends javax.swing.JFrame {
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, -1, -1));
 
         jLabel8.setText("Ganancias");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 60, -1, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 30, -1, -1));
 
         jLabel9.setText("Costos");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, -1, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 90, -1, -1));
 
         jLabel10.setText("Utilidad");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 130, -1, -1));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 130, -1, -1));
 
         jLabel11.setText("Guiones");
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 220, -1, -1));
@@ -402,19 +432,14 @@ public class Interfaz extends javax.swing.JFrame {
         jPanel1.add(txtCantGuiones, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 210, 40, -1));
         jPanel1.add(txtCantNiveles, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 250, 40, 20));
 
-        txtCantSprites.setText("jTextField3");
         txtCantSprites.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCantSpritesActionPerformed(evt);
             }
         });
-        jPanel1.add(txtCantSprites, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 280, -1, -1));
-
-        txtCantSistemas.setText("jTextField4");
-        jPanel1.add(txtCantSistemas, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 310, -1, -1));
-
-        txtCantDLC.setText("jTextField5");
-        jPanel1.add(txtCantDLC, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 340, -1, -1));
+        jPanel1.add(txtCantSprites, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 280, 50, -1));
+        jPanel1.add(txtCantSistemas, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 310, 50, -1));
+        jPanel1.add(txtCantDLC, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 340, 50, -1));
 
         jLabel17.setText("Que hace director");
         jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 230, -1, -1));
@@ -456,36 +481,45 @@ public class Interfaz extends javax.swing.JFrame {
         jPanel1.add(txtSistemas, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 230, 60, 30));
         jPanel1.add(txtDLC, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 260, 50, -1));
 
-        jTextField13.setText("jTextField13");
-        jTextField13.addActionListener(new java.awt.event.ActionListener() {
+        txtCostoEmpresa.setText("jTextField13");
+        txtCostoEmpresa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField13ActionPerformed(evt);
+                txtCostoEmpresaActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField13, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 90, 60, -1));
+        jPanel1.add(txtCostoEmpresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 80, 130, 30));
 
-        jTextField14.setText("jTextField13");
-        jTextField14.addActionListener(new java.awt.event.ActionListener() {
+        txtGananciaEmpresa.setText("jTextField13");
+        txtGananciaEmpresa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField14ActionPerformed(evt);
+                txtGananciaEmpresaActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField14, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 50, 60, -1));
+        jPanel1.add(txtGananciaEmpresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 30, 170, 30));
 
-        jTextField15.setText("jTextField15");
-        jPanel1.add(jTextField15, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 130, 60, 30));
-        jPanel1.add(txtVideojuegosEstandarListos, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 60, -1, -1));
+        txtUtilidadEmpresa.setText("jTextField15");
+        jPanel1.add(txtUtilidadEmpresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 120, 160, 30));
 
-        txtVideojuegosDLCListos.setText("Pruebaaaa");
-        jPanel1.add(txtVideojuegosDLCListos, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 100, -1, -1));
+        txtVideojuegosEstandarListos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtVideojuegosEstandarListosActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtVideojuegosEstandarListos, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 60, 80, -1));
 
-        txtDiasDespacho.setText("jTextField18");
+        txtVideojuegosDLCListos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtVideojuegosDLCListosActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtVideojuegosDLCListos, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 100, 70, 30));
+
         txtDiasDespacho.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDiasDespachoActionPerformed(evt);
             }
         });
-        jPanel1.add(txtDiasDespacho, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 140, -1, -1));
+        jPanel1.add(txtDiasDespacho, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 140, 80, 30));
 
         txtEstadoPM.setText("jTextField19");
         txtEstadoPM.addActionListener(new java.awt.event.ActionListener() {
@@ -498,11 +532,11 @@ public class Interfaz extends javax.swing.JFrame {
         txtEstadoDirector.setText("jTextField20");
         jPanel1.add(txtEstadoDirector, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 230, -1, -1));
 
-        jTextField21.setText("jTextField21");
-        jPanel1.add(jTextField21, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 270, -1, -1));
+        txtCantFaltasPM.setText("jTextField21");
+        jPanel1.add(txtCantFaltasPM, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 270, -1, -1));
 
-        jTextField22.setText("jTextField22");
-        jPanel1.add(jTextField22, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 320, -1, -1));
+        txtDescuentoPM.setText("jTextField22");
+        jPanel1.add(txtDescuentoPM, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 320, -1, -1));
 
         jLabel25.setText("DLC");
         jPanel1.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 350, -1, -1));
@@ -550,6 +584,16 @@ public class Interfaz extends javax.swing.JFrame {
         txtMaxDriveDLC.setText("jTextField5");
         jPanel1.add(txtMaxDriveDLC, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 340, -1, -1));
 
+        txtContadorDias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtContadorDiasActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtContadorDias, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 410, 60, -1));
+
+        jLabel27.setText("Contador de dias");
+        jPanel1.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 410, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -564,13 +608,13 @@ public class Interfaz extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField13ActionPerformed
+    private void txtCostoEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCostoEmpresaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField13ActionPerformed
+    }//GEN-LAST:event_txtCostoEmpresaActionPerformed
 
-    private void jTextField14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField14ActionPerformed
+    private void txtGananciaEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGananciaEmpresaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField14ActionPerformed
+    }//GEN-LAST:event_txtGananciaEmpresaActionPerformed
 
     private void txtCantGuionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCantGuionesActionPerformed
         // TODO add your handling code here:
@@ -630,8 +674,8 @@ public class Interfaz extends javax.swing.JFrame {
             Interfaz.sprites = new int[Interfaz.spritesDrive];
             Interfaz.sistemas = new int[Interfaz.sistemasDrive];
             Interfaz.dlc = new int[Interfaz.dlcDrive];
-            this.projectManager = new Empleado(this.exclusionGuiones, this.exclusionNiveles, this.exclusionSprites, this.exclusionSistemas,this.exclusionDLC,this.integradorGuiones, this.integradorNiveles, this.integradorSprites,this.integradorSistemas, this.integradorDLC, this.sDespacho, this.sEmpleado,1);
-            this.director = new Empleado(this.exclusionGuiones, this.exclusionNiveles, this.exclusionSprites, this.exclusionSistemas,this.exclusionDLC,this.integradorGuiones, this.integradorNiveles, this.integradorSprites,this.integradorSistemas, this.integradorDLC, this.sDespacho, this.sEmpleado,2);
+            this.projectManager = new Empleado(this.exclusionGuiones, this.exclusionNiveles, this.exclusionSprites, this.exclusionSistemas,this.exclusionDLC,this.integradorGuiones, this.integradorNiveles, this.integradorSprites,this.integradorSistemas, this.integradorDLC, this.sDespacho, this.sEmpleado,1, "Nintendo");
+            this.director = new Empleado(this.exclusionGuiones, this.exclusionNiveles, this.exclusionSprites, this.exclusionSistemas,this.exclusionDLC,this.integradorGuiones, this.integradorNiveles, this.integradorSprites,this.integradorSistemas, this.integradorDLC, this.sDespacho, this.sEmpleado,2, "Nintendo");
             this.inicializarDrives(Interfaz.guiones);
             this.inicializarDrives(Interfaz.niveles);
             this.inicializarDrives(Interfaz.sprites);
@@ -644,8 +688,8 @@ public class Interfaz extends javax.swing.JFrame {
           this.inicializarDevelopers(Interfaz.developersDLC, this.developerDLC, this.driveDLC, this.exclusionDLC, this.integradorDLC,asignarDiasCantidades("Nintendo", 5)[0],asignarDiasCantidades("Nintendo", 5)[1], 5);
           this.inicializarIntegradores(Interfaz.integrador, this.integradores, this.driveGuiones, this.driveNiveles, this.driveSprites, this.driveSistemas, this.driveDLC,this.exclusionGuiones, this.exclusionNiveles, this.exclusionSprites,  this.exclusionSistemas, this.exclusionDLC,this.integradorGuiones, this.integradorSprites, this.integradorNiveles, this.integradorSistemas, this.integradorDLC,2, this.sDespacho);
 
-//           this.projectManager.start();
-//            this.director.start();
+           this.projectManager.start();
+           this.director.start();
         }
         
         
@@ -687,6 +731,19 @@ public class Interfaz extends javax.swing.JFrame {
     private void txtCantSpritesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCantSpritesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCantSpritesActionPerformed
+
+    private void txtContadorDiasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContadorDiasActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_txtContadorDiasActionPerformed
+
+    private void txtVideojuegosEstandarListosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVideojuegosEstandarListosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtVideojuegosEstandarListosActionPerformed
+
+    private void txtVideojuegosDLCListosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVideojuegosDLCListosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtVideojuegosDLCListosActionPerformed
 
    
     
@@ -748,6 +805,7 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -756,22 +814,22 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField13;
-    private javax.swing.JTextField jTextField14;
-    private javax.swing.JTextField jTextField15;
-    private javax.swing.JTextField jTextField21;
-    private javax.swing.JTextField jTextField22;
     private javax.swing.JTextField jTextField7;
     public static javax.swing.JTextField txtCantDLC;
+    public static javax.swing.JTextField txtCantFaltasPM;
     public static javax.swing.JTextField txtCantGuiones;
     public static javax.swing.JTextField txtCantIntegradores;
     public static javax.swing.JTextField txtCantNiveles;
     public static javax.swing.JTextField txtCantSistemas;
     public static javax.swing.JTextField txtCantSprites;
+    public static javax.swing.JTextField txtContadorDias;
+    public static javax.swing.JTextField txtCostoEmpresa;
     public static javax.swing.JTextField txtDLC;
+    public static javax.swing.JTextField txtDescuentoPM;
     public static javax.swing.JTextField txtDiasDespacho;
     public static javax.swing.JTextField txtEstadoDirector;
     public static javax.swing.JTextField txtEstadoPM;
+    public static javax.swing.JTextField txtGananciaEmpresa;
     public static javax.swing.JTextField txtGuiones;
     public static javax.swing.JTextField txtMaxDriveDLC;
     public static javax.swing.JTextField txtMaxDriveGuiones;
@@ -781,6 +839,7 @@ public class Interfaz extends javax.swing.JFrame {
     public static javax.swing.JTextField txtNiveles;
     public static javax.swing.JTextField txtSistemas;
     public static javax.swing.JTextField txtSprites;
+    public static javax.swing.JTextField txtUtilidadEmpresa;
     public static javax.swing.JTextField txtVideojuegosDLCListos;
     public static javax.swing.JTextField txtVideojuegosEstandarListos;
     // End of variables declaration//GEN-END:variables
