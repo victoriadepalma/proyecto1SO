@@ -36,76 +36,77 @@ public class Interfaz extends javax.swing.JFrame {
     boolean cargado;
     
     //Vectores Almacen de cada Producto
-    static int[] guiones;
-    static int[] niveles;
-    static int[] sprites;
-    static int[] sistemas;
-    static int[] dlc;
+    public int[] guiones;
+    public int[] niveles;
+    public int[] sprites;
+    public int[] sistemas;
+    public int[] dlc;
   
     
     //Contadores de productos por los ensambladores. Se utilizan para asignar 0s (Quitar Producto) en la spritesEicion que corresponde en el sentido de izquierda a derecha
-    static int guionesE;
-    static int nivelesE;
-    static int spritesE;
-    static int sistemasE;
-    static int dlcE;
+    public int guionesE;
+    public int nivelesE;
+    public int spritesE;
+    public int sistemasE;
+    public int dlcE;
 
 
     //Contadores de productos por los productores. Se utilizan para asignar 1s (Agregar Producto) en la posicion que corresponde en el sentido de izquierda a derecha
-    static int guionesP;
-    static int nivelesP;
-    static int spritesP;
-    static int sistemasP;
-    static int dlcP;
+    public int guionesP;
+    public int nivelesP;
+    public int spritesP;
+    public int sistemasP;
+    public int dlcP;
     
     //Cantidad inicial
-    static int cantVideojuegos = 0;
-     static int cantVideojuegosDLC = 0;
-    static int cantGuiones = 0;
-    static int cantNiveles = 0;
-    static int cantSprites = 0;
-    static int cantSistemas = 0;
-    static int cantDLC = 0;
+    public int cantVideojuegos = 0;
+     public int cantVideojuegosDLC = 0;
+    public int cantGuiones = 0;
+    public int cantNiveles = 0;
+    public int cantSprites = 0;
+    public int cantSistemas = 0;
+    public int cantDLC = 0;
     
     //Tamaño del drive (vector)
-    static int guionesDrive;
-    static int nivelesDrive;
-    static int spritesDrive;
-    static int sistemasDrive;
-    static int dlcDrive;
+    public int guionesDrive;
+    public int nivelesDrive;
+    public int spritesDrive;
+    public int sistemasDrive;
+    public int dlcDrive;
     
 
-    static int diasDespacho = 0;
-    static int diaDuracion = 0;
-    static int cantVideojuegosEnviados = 0;
+    public int diasDespacho = 0;
+    public int diaDuracion = 0;
+    public int cantVideojuegosEnviados = 0;
     
     //Numero de developers e integradores
-    static int developersGuiones;
-    static int developersNiveles;
-    static int developersSprites;
-    static int developersSistemas;
-    static int developersDLC;
-    static int integrador;
+    public int developersGuiones;
+    public int developersNiveles;
+    public int developersSprites;
+    public int developersSistemas;
+    public int developersDLC;
+    public int integrador;
     
     //sueldos
     
-        static int sueldoDeveloperGuiones=0;
-    static int sueldoDeveloperNiveles=0;
-    static int sueldoDeveloperSprites=0;
-    static int sueldoDeveloperSistemas=0;
-    static int sueldoDeveloperDLC=0;
-    static int sueldoIntegrador=0;
-    static int sueldoTotalPM=0;
-    static int sueldoDirector=0;
+        public int sueldoDeveloperGuiones=0;
+    public int sueldoDeveloperNiveles=0;
+    public int sueldoDeveloperSprites=0;
+    public int sueldoDeveloperSistemas=0;
+    public int sueldoDeveloperDLC=0;
+    public int sueldoIntegrador=0;
+    public int sueldoTotalPM=0;
+    public int sueldoDirector=0;
     //descuento PM
-    static int descuentoPM=0;
-    static int contadorFaltasPM=0;
+    public int descuentoPM=0;
+    public int contadorFaltasPM=0;
     
     //ganancia,costo y utilidad empresa
     
-    static int gananciaEmpresa=0;
-    static int costoEmpresa=0;
-    static int utilidadEmpresa = 0; 
+    public int gananciaEmpresa=0;
+    public int costoEmpresa=0;
+    public int utilidadEmpresa = 0; 
+    public String empresa;
     //static int utilidadEmpresa=gananciaEmpresa-costoEmpresa;
     
 
@@ -145,75 +146,75 @@ public class Interfaz extends javax.swing.JFrame {
     /**
      * Creates new form Interfaz
      */
-    public Interfaz() {
+    public Interfaz(String empresa) {
         initComponents();
          //this.setTitle("");
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-        
+        this.empresa=empresa;
 
    
         
-        Interfaz.guionesDrive = 25;
-        Interfaz.nivelesDrive = 20;
-        Interfaz.spritesDrive = 55;
-        Interfaz.sistemasDrive = 35;
-        Interfaz.dlcDrive = 10;
+        this.guionesDrive = 25;
+        this.nivelesDrive = 20;
+        this.spritesDrive = 55;
+        this.sistemasDrive = 35;
+        this.dlcDrive = 10;
     
         
         
        
 
-        Interfaz.developersGuiones = 0;
-        Interfaz.developersNiveles = 0;
-        Interfaz.developersSprites = 0;
-        Interfaz.developersSistemas = 0;
-        Interfaz.developersDLC = 0;
+        this.developersGuiones = 0;
+        this.developersNiveles = 0;
+        this.developersSprites = 0;
+        this.developersSistemas = 0;
+        this.developersDLC = 0;
         
         
-        Interfaz.integrador = 0;
+        this.integrador = 0;
         
         this.cargado = false;
 
-        Interfaz.guionesE = 0;
-        Interfaz.nivelesE = 0;
-        Interfaz.spritesE = 0;
-        Interfaz.sistemasE = 0;
-        Interfaz.dlcE = 0;
+        this.guionesE = 0;
+        this.nivelesE = 0;
+        this.spritesE = 0;
+        this.sistemasE = 0;
+        this.dlcE = 0;
 
-        Interfaz.guionesP = 0;
-        Interfaz.nivelesP = 0;
-        Interfaz.spritesP = 0;
-        Interfaz.sistemasP = 0;
-        Interfaz.dlcP = 0;
+        this.guionesP = 0;
+        this.nivelesP = 0;
+        this.spritesP = 0;
+        this.sistemasP = 0;
+        this.dlcP = 0;
         
         
         
-        this.c = new CargarArchivo();
+        this.c = new CargarArchivo(this);
         
-        Interfaz.txtGuiones.setText(Integer.toString(Interfaz.developersGuiones));
-        Interfaz.txtNiveles.setText(Integer.toString(Interfaz.developersNiveles));
-        Interfaz.txtSprites.setText(Integer.toString(Interfaz.developersSprites));
-        Interfaz.txtSistemas.setText(Integer.toString(Interfaz.developersNiveles));
-        Interfaz.txtDLC.setText(Integer.toString(Interfaz.developersSprites));
-        Interfaz.txtVideojuegosEstandarListos.setText(Integer.toString(Interfaz.cantVideojuegos));
-        Interfaz.txtVideojuegosDLCListos.setText(Integer.toString(Interfaz.cantVideojuegosDLC));
-        Interfaz.txtEstadoDirector.setText("Trabajando");
-        Interfaz.txtEstadoPM.setText("Viendo streams");
-        Interfaz.txtDescuentoPM.setText(Integer.toString(Interfaz.descuentoPM));
-        Interfaz.txtGananciaEmpresa.setText(Integer.toString(Interfaz.gananciaEmpresa));
-        Interfaz.txtCostoEmpresa.setText(Integer.toString(Interfaz.costoEmpresa));
-        //Interfaz.txtUtilidadEmpresa.setText(Integer.toString(Interfaz.utilidadEmpresa));
-        Interfaz.txtCantFaltasPM.setText(Integer.toString(Interfaz.contadorFaltasPM));
+        this.txtGuiones.setText(Integer.toString(this.developersGuiones));
+        this.txtNiveles.setText(Integer.toString(this.developersNiveles));
+        this.txtSprites.setText(Integer.toString(this.developersSprites));
+        this.txtSistemas.setText(Integer.toString(this.developersNiveles));
+        this.txtDLC.setText(Integer.toString(this.developersSprites));
+        this.txtVideojuegosEstandarListos.setText(Integer.toString(this.cantVideojuegos));
+        this.txtVideojuegosDLCListos.setText(Integer.toString(this.cantVideojuegosDLC));
+        this.txtEstadoDirector.setText("Trabajando");
+        this.txtEstadoPM.setText("Viendo streams");
+        this.txtDescuentoPM.setText(Integer.toString(this.descuentoPM));
+        this.txtGananciaEmpresa.setText(Integer.toString(this.gananciaEmpresa));
+        this.txtCostoEmpresa.setText(Integer.toString(this.costoEmpresa));
+        //this.txtUtilidadEmpresa.setText(Integer.toString(this.utilidadEmpresa));
+        this.txtCantFaltasPM.setText(Integer.toString(this.contadorFaltasPM));
       
         
         
         
-        Interfaz.txtCantIntegradores.setText(Integer.toString(Interfaz.integrador));
+        this.txtCantIntegradores.setText(Integer.toString(this.integrador));
         
-        Interfaz.txtDiasDespacho.setText(Integer.toString(Interfaz.diasDespacho));
+        this.txtDiasDespacho.setText(Integer.toString(this.diasDespacho));
         
-        Interfaz.txtContadorDias.setText(Integer.toString(0));
+        this.txtContadorDias.setText(Integer.toString(0));
         
         
     }
@@ -228,7 +229,7 @@ public class Interfaz extends javax.swing.JFrame {
     
             if (i < developers) {
                 System.out.println(tipoDeveloper);
-                developer[i] = new  Developer(sDrive, sExclusion, sIntegrador, tipoDeveloper, diasProd,cant, true);
+                developer[i] = new  Developer(sDrive, sExclusion, sIntegrador, tipoDeveloper, diasProd,cant, true,this);
                 developer[i].start();
             }
 
@@ -304,7 +305,7 @@ public class Interfaz extends javax.swing.JFrame {
                 integrador[i] = new Integrador(sDriveGuion, sDriveNivel, sDriveSprite, sDriveSistema, sDriveDLC, 
                         sExclusionGuion, sExclusionNivel, sExclusionSprite, sExclusionSistema, sExclusionDLC, 
                         sIntegradorGuiones, sIntegradorNiveles, sIntegradorSprites, sIntegradorSistemas, sIntegradorDLC,
-                        diasInteg, sDespacho,"Nintendo",true);
+                        diasInteg, sDespacho,this.empresa,true,this);
                 integrador[i].start();
             }
 
@@ -461,7 +462,7 @@ public class Interfaz extends javax.swing.JFrame {
         jPanel1.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 270, -1, -1));
 
         jLabel24.setText("Dinero descontado PM");
-        jPanel1.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 320, -1, -1));
+        jPanel1.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 320, -1, -1));
 
         jTextField7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -481,7 +482,6 @@ public class Interfaz extends javax.swing.JFrame {
         jPanel1.add(txtSistemas, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 230, 60, 30));
         jPanel1.add(txtDLC, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 260, 50, -1));
 
-        txtCostoEmpresa.setText("jTextField13");
         txtCostoEmpresa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCostoEmpresaActionPerformed(evt);
@@ -489,15 +489,12 @@ public class Interfaz extends javax.swing.JFrame {
         });
         jPanel1.add(txtCostoEmpresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 80, 130, 30));
 
-        txtGananciaEmpresa.setText("jTextField13");
         txtGananciaEmpresa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtGananciaEmpresaActionPerformed(evt);
             }
         });
         jPanel1.add(txtGananciaEmpresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 30, 170, 30));
-
-        txtUtilidadEmpresa.setText("jTextField15");
         jPanel1.add(txtUtilidadEmpresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 120, 160, 30));
 
         txtVideojuegosEstandarListos.addActionListener(new java.awt.event.ActionListener() {
@@ -521,22 +518,15 @@ public class Interfaz extends javax.swing.JFrame {
         });
         jPanel1.add(txtDiasDespacho, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 140, 80, 30));
 
-        txtEstadoPM.setText("jTextField19");
         txtEstadoPM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEstadoPMActionPerformed(evt);
             }
         });
-        jPanel1.add(txtEstadoPM, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 200, -1, -1));
-
-        txtEstadoDirector.setText("jTextField20");
-        jPanel1.add(txtEstadoDirector, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 230, -1, -1));
-
-        txtCantFaltasPM.setText("jTextField21");
-        jPanel1.add(txtCantFaltasPM, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 270, -1, -1));
-
-        txtDescuentoPM.setText("jTextField22");
-        jPanel1.add(txtDescuentoPM, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 320, -1, -1));
+        jPanel1.add(txtEstadoPM, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 200, 110, 30));
+        jPanel1.add(txtEstadoDirector, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 230, 110, 30));
+        jPanel1.add(txtCantFaltasPM, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 270, 100, 30));
+        jPanel1.add(txtDescuentoPM, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 320, 100, 30));
 
         jLabel25.setText("DLC");
         jPanel1.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 350, -1, -1));
@@ -562,27 +552,24 @@ public class Interfaz extends javax.swing.JFrame {
         jPanel1.add(btnCargar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, -1, -1));
 
         jLabel26.setText("Maximos en Drive");
-        jPanel1.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 180, -1, -1));
+        jPanel1.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 190, -1, -1));
 
-        txtMaxDriveGuiones.setText("jTextField1");
         txtMaxDriveGuiones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtMaxDriveGuionesActionPerformed(evt);
             }
         });
-        jPanel1.add(txtMaxDriveGuiones, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 210, -1, -1));
+        jPanel1.add(txtMaxDriveGuiones, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 210, 50, 30));
 
-        txtMaxDriveNiveles.setText("jTextField2");
-        jPanel1.add(txtMaxDriveNiveles, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 240, -1, -1));
-
-        txtMaxDriveSprites.setText("jTextField3");
-        jPanel1.add(txtMaxDriveSprites, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 280, -1, -1));
-
-        txtMaxDriveSistemas.setText("jTextField4");
-        jPanel1.add(txtMaxDriveSistemas, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 310, -1, -1));
-
-        txtMaxDriveDLC.setText("jTextField5");
-        jPanel1.add(txtMaxDriveDLC, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 340, -1, -1));
+        txtMaxDriveNiveles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMaxDriveNivelesActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtMaxDriveNiveles, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 240, 50, 30));
+        jPanel1.add(txtMaxDriveSprites, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 280, 50, -1));
+        jPanel1.add(txtMaxDriveSistemas, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 310, 50, -1));
+        jPanel1.add(txtMaxDriveDLC, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 340, 60, -1));
 
         txtContadorDias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -628,22 +615,22 @@ public class Interfaz extends javax.swing.JFrame {
         // TODO add your handling code here:
                
 //En el if me aseguro que no existan datos erroneos del archivo
-        if (Interfaz.diaDuracion > 0 && Interfaz.diasDespacho > 0 && Interfaz.guionesDrive > 0 
-                && Interfaz.nivelesDrive > 0 && Interfaz.spritesDrive > 0 && Interfaz.sistemasDrive > 0 && Interfaz.dlcDrive > 0 
+        if (this.diaDuracion > 0 && this.diasDespacho > 0 && this.guionesDrive > 0 
+                && this.nivelesDrive > 0 && this.spritesDrive > 0 && this.sistemasDrive > 0 && this.dlcDrive > 0 
               
-                && Interfaz.developersGuiones >= 0 && Interfaz.developersNiveles >= 0 && Interfaz.developersSprites >= 0 && Interfaz.developersSistemas >= 0 && Interfaz.developersDLC >= 0 
+                && this.developersGuiones >= 0 && this.developersNiveles >= 0 && this.developersSprites >= 0 && this.developersSistemas >= 0 && this.developersDLC >= 0 
  
-            && Interfaz.integrador >= 0 
+            && this.integrador >= 0 
                 ) {
             this.c.setVisible(false);
         
      
             //Creo todos mis semaforos. Los de Almacen les paso el valor de 30
-            this.driveGuiones = new Semaphore(Interfaz.guionesDrive);
-            this.driveNiveles = new Semaphore(Interfaz.nivelesDrive);
-            this.driveSprites = new Semaphore(Interfaz.spritesDrive);
-            this.driveSistemas = new Semaphore(Interfaz.sistemasDrive);
-            this.driveDLC = new Semaphore(Interfaz.dlcDrive);
+            this.driveGuiones = new Semaphore(this.guionesDrive);
+            this.driveNiveles = new Semaphore(this.nivelesDrive);
+            this.driveSprites = new Semaphore(this.spritesDrive);
+            this.driveSistemas = new Semaphore(this.sistemasDrive);
+            this.driveDLC = new Semaphore(this.dlcDrive);
  
             this.integradorGuiones = new Semaphore(0);
             this.integradorNiveles = new Semaphore(0);
@@ -669,24 +656,24 @@ public class Interfaz extends javax.swing.JFrame {
            this.integradores = new Integrador[16];
             System.out.println(this.developerGuiones.length);
            
-            Interfaz.guiones = new int[Interfaz.guionesDrive];
-            Interfaz.niveles = new int[Interfaz.nivelesDrive];
-            Interfaz.sprites = new int[Interfaz.spritesDrive];
-            Interfaz.sistemas = new int[Interfaz.sistemasDrive];
-            Interfaz.dlc = new int[Interfaz.dlcDrive];
-            this.projectManager = new Empleado(this.exclusionGuiones, this.exclusionNiveles, this.exclusionSprites, this.exclusionSistemas,this.exclusionDLC,this.integradorGuiones, this.integradorNiveles, this.integradorSprites,this.integradorSistemas, this.integradorDLC, this.sDespacho, this.sEmpleado,1, "Nintendo");
-            this.director = new Empleado(this.exclusionGuiones, this.exclusionNiveles, this.exclusionSprites, this.exclusionSistemas,this.exclusionDLC,this.integradorGuiones, this.integradorNiveles, this.integradorSprites,this.integradorSistemas, this.integradorDLC, this.sDespacho, this.sEmpleado,2, "Nintendo");
-            this.inicializarDrives(Interfaz.guiones);
-            this.inicializarDrives(Interfaz.niveles);
-            this.inicializarDrives(Interfaz.sprites);
-            this.inicializarDrives(Interfaz.sistemas);
-            this.inicializarDrives(Interfaz.dlc);
-            this.inicializarDevelopers(Interfaz.developersGuiones, this.developerGuiones, this.driveGuiones, this.exclusionGuiones, this.integradorGuiones,asignarDiasCantidades("Nintendo", 1)[0],asignarDiasCantidades("Nintendo", 1)[1], 1);
-           this.inicializarDevelopers(Interfaz.developersNiveles, this.developerNiveles, this.driveNiveles, this.exclusionNiveles, this.integradorNiveles,asignarDiasCantidades("Nintendo", 2)[0],asignarDiasCantidades("Nintendo", 2)[1], 2);
-          this.inicializarDevelopers(Interfaz.developersSprites, this.developerSprites, this.driveSprites, this.exclusionSprites, this.integradorSprites,asignarDiasCantidades("Nintendo", 3)[0],asignarDiasCantidades("Nintendo", 3)[1], 3);
-            this.inicializarDevelopers(Interfaz.developersSistemas, this.developerSistemas, this.driveSistemas, this.exclusionSistemas, this.integradorSistemas,asignarDiasCantidades("Nintendo", 4)[0],asignarDiasCantidades("Nintendo", 4)[1], 4);
-          this.inicializarDevelopers(Interfaz.developersDLC, this.developerDLC, this.driveDLC, this.exclusionDLC, this.integradorDLC,asignarDiasCantidades("Nintendo", 5)[0],asignarDiasCantidades("Nintendo", 5)[1], 5);
-          this.inicializarIntegradores(Interfaz.integrador, this.integradores, this.driveGuiones, this.driveNiveles, this.driveSprites, this.driveSistemas, this.driveDLC,this.exclusionGuiones, this.exclusionNiveles, this.exclusionSprites,  this.exclusionSistemas, this.exclusionDLC,this.integradorGuiones, this.integradorSprites, this.integradorNiveles, this.integradorSistemas, this.integradorDLC,2, this.sDespacho);
+            this.guiones = new int[this.guionesDrive];
+            this.niveles = new int[this.nivelesDrive];
+            this.sprites = new int[this.spritesDrive];
+            this.sistemas = new int[this.sistemasDrive];
+            this.dlc = new int[this.dlcDrive];
+            this.projectManager = new Empleado(this.exclusionGuiones, this.exclusionNiveles, this.exclusionSprites, this.exclusionSistemas,this.exclusionDLC,this.integradorGuiones, this.integradorNiveles, this.integradorSprites,this.integradorSistemas, this.integradorDLC, this.sDespacho, this.sEmpleado,1, this.empresa,this);
+            this.director = new Empleado(this.exclusionGuiones, this.exclusionNiveles, this.exclusionSprites, this.exclusionSistemas,this.exclusionDLC,this.integradorGuiones, this.integradorNiveles, this.integradorSprites,this.integradorSistemas, this.integradorDLC, this.sDespacho, this.sEmpleado,2, this.empresa,this);
+            this.inicializarDrives(this.guiones);
+            this.inicializarDrives(this.niveles);
+            this.inicializarDrives(this.sprites);
+            this.inicializarDrives(this.sistemas);
+            this.inicializarDrives(this.dlc);
+            this.inicializarDevelopers(this.developersGuiones, this.developerGuiones, this.driveGuiones, this.exclusionGuiones, this.integradorGuiones,asignarDiasCantidades(this.empresa, 1)[0],asignarDiasCantidades(this.empresa, 1)[1], 1);
+           this.inicializarDevelopers(this.developersNiveles, this.developerNiveles, this.driveNiveles, this.exclusionNiveles, this.integradorNiveles,asignarDiasCantidades(this.empresa, 2)[0],asignarDiasCantidades(this.empresa, 2)[1], 2);
+          this.inicializarDevelopers(this.developersSprites, this.developerSprites, this.driveSprites, this.exclusionSprites, this.integradorSprites,asignarDiasCantidades(this.empresa, 3)[0],asignarDiasCantidades(this.empresa, 3)[1], 3);
+            this.inicializarDevelopers(this.developersSistemas, this.developerSistemas, this.driveSistemas, this.exclusionSistemas, this.integradorSistemas,asignarDiasCantidades(this.empresa, 4)[0],asignarDiasCantidades(this.empresa, 4)[1], 4);
+          this.inicializarDevelopers(this.developersDLC, this.developerDLC, this.driveDLC, this.exclusionDLC, this.integradorDLC,asignarDiasCantidades(this.empresa, 5)[0],asignarDiasCantidades(this.empresa, 5)[1], 5);
+          this.inicializarIntegradores(this.integrador, this.integradores, this.driveGuiones, this.driveNiveles, this.driveSprites, this.driveSistemas, this.driveDLC,this.exclusionGuiones, this.exclusionNiveles, this.exclusionSprites,  this.exclusionSistemas, this.exclusionDLC,this.integradorGuiones, this.integradorSprites, this.integradorNiveles, this.integradorSistemas, this.integradorDLC,2, this.sDespacho);
 
            this.projectManager.start();
            this.director.start();
@@ -745,6 +732,10 @@ public class Interfaz extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtVideojuegosDLCListosActionPerformed
 
+    private void txtMaxDriveNivelesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaxDriveNivelesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMaxDriveNivelesActionPerformed
+
    
     
     
@@ -778,7 +769,10 @@ public class Interfaz extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Interfaz().setVisible(true);
+              
+        
+
+      
             }
         });
     }
@@ -814,33 +808,33 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField7;
-    public static javax.swing.JTextField txtCantDLC;
-    public static javax.swing.JTextField txtCantFaltasPM;
-    public static javax.swing.JTextField txtCantGuiones;
-    public static javax.swing.JTextField txtCantIntegradores;
-    public static javax.swing.JTextField txtCantNiveles;
-    public static javax.swing.JTextField txtCantSistemas;
-    public static javax.swing.JTextField txtCantSprites;
-    public static javax.swing.JTextField txtContadorDias;
-    public static javax.swing.JTextField txtCostoEmpresa;
-    public static javax.swing.JTextField txtDLC;
-    public static javax.swing.JTextField txtDescuentoPM;
-    public static javax.swing.JTextField txtDiasDespacho;
-    public static javax.swing.JTextField txtEstadoDirector;
-    public static javax.swing.JTextField txtEstadoPM;
-    public static javax.swing.JTextField txtGananciaEmpresa;
-    public static javax.swing.JTextField txtGuiones;
-    public static javax.swing.JTextField txtMaxDriveDLC;
-    public static javax.swing.JTextField txtMaxDriveGuiones;
-    public static javax.swing.JTextField txtMaxDriveNiveles;
-    public static javax.swing.JTextField txtMaxDriveSistemas;
-    public static javax.swing.JTextField txtMaxDriveSprites;
-    public static javax.swing.JTextField txtNiveles;
-    public static javax.swing.JTextField txtSistemas;
-    public static javax.swing.JTextField txtSprites;
-    public static javax.swing.JTextField txtUtilidadEmpresa;
-    public static javax.swing.JTextField txtVideojuegosDLCListos;
-    public static javax.swing.JTextField txtVideojuegosEstandarListos;
+    public javax.swing.JTextField jTextField7;
+    public javax.swing.JTextField txtCantDLC;
+    public javax.swing.JTextField txtCantFaltasPM;
+    public javax.swing.JTextField txtCantGuiones;
+    public javax.swing.JTextField txtCantIntegradores;
+    public javax.swing.JTextField txtCantNiveles;
+    public javax.swing.JTextField txtCantSistemas;
+    public javax.swing.JTextField txtCantSprites;
+    public javax.swing.JTextField txtContadorDias;
+    public javax.swing.JTextField txtCostoEmpresa;
+    public javax.swing.JTextField txtDLC;
+    public javax.swing.JTextField txtDescuentoPM;
+    public javax.swing.JTextField txtDiasDespacho;
+    public javax.swing.JTextField txtEstadoDirector;
+    public javax.swing.JTextField txtEstadoPM;
+    public javax.swing.JTextField txtGananciaEmpresa;
+    public javax.swing.JTextField txtGuiones;
+    public javax.swing.JTextField txtMaxDriveDLC;
+    public javax.swing.JTextField txtMaxDriveGuiones;
+    public javax.swing.JTextField txtMaxDriveNiveles;
+    public javax.swing.JTextField txtMaxDriveSistemas;
+    public javax.swing.JTextField txtMaxDriveSprites;
+    public javax.swing.JTextField txtNiveles;
+    public javax.swing.JTextField txtSistemas;
+    public javax.swing.JTextField txtSprites;
+    public javax.swing.JTextField txtUtilidadEmpresa;
+    public javax.swing.JTextField txtVideojuegosDLCListos;
+    public javax.swing.JTextField txtVideojuegosEstandarListos;
     // End of variables declaration//GEN-END:variables
 }

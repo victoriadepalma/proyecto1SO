@@ -50,11 +50,13 @@ public class CargarArchivo extends javax.swing.JFrame {
     JFileChooser seleccionado = new JFileChooser();
     File archivo;
     Archivo a = new Archivo();
+    Interfaz i;
 
-    public CargarArchivo() {
+    public CargarArchivo(Interfaz i) {
         initComponents();
         this.setResizable(false);
         this.setTitle("Archivos");
+        this.i=i;
     }
 
     
@@ -132,10 +134,10 @@ public class CargarArchivo extends javax.swing.JFrame {
                                     if (!aux.equalsIgnoreCase("Developers Niveles")) {
                                          
                                         auxDevelopersGuiones = Integer.parseInt(aux);
-                                        Interfaz.developersGuiones = this.auxDevelopersGuiones;
-                                        Interfaz.txtGuiones.setText(Integer.toString(Interfaz.developersGuiones));
+                                        i.developersGuiones = this.auxDevelopersGuiones;
+                                        i.txtGuiones.setText(Integer.toString(i.developersGuiones));
                                         auxDriveMaxGuiones = 25; 
-                                        Interfaz.txtMaxDriveGuiones.setText(Integer.toString(this.auxDriveMaxGuiones));
+                                        i.txtMaxDriveGuiones.setText(Integer.toString(this.auxDriveMaxGuiones));
                                         
 
                                     }
@@ -150,10 +152,10 @@ public class CargarArchivo extends javax.swing.JFrame {
                                     if (!aux.equalsIgnoreCase("Developers Sprites")) {
                                      
                                         auxDevelopersNiveles = Integer.parseInt(aux);
-                                        Interfaz.developersNiveles = this.auxDevelopersNiveles;
-                                        Interfaz.txtNiveles.setText(Integer.toString(Interfaz.developersNiveles));
+                                        i.developersNiveles = this.auxDevelopersNiveles;
+                                        i.txtNiveles.setText(Integer.toString(i.developersNiveles));
                                         auxDriveMaxNiveles = 20; 
-                                        Interfaz.txtMaxDriveNiveles.setText(Integer.toString(this.auxDriveMaxNiveles));
+                                        i.txtMaxDriveNiveles.setText(Integer.toString(this.auxDriveMaxNiveles));
 
                                     }
 
@@ -165,10 +167,10 @@ public class CargarArchivo extends javax.swing.JFrame {
                                     aux = bf.readLine();
                                     if (!aux.equalsIgnoreCase("Developers Sistemas")) {
                                         auxDevelopersSprites = Integer.parseInt(aux);
-                                        Interfaz.developersSprites = this.auxDevelopersSprites;
-                                        Interfaz.txtSprites.setText(Integer.toString(Interfaz.developersSprites));
+                                        i.developersSprites = this.auxDevelopersSprites;
+                                        i.txtSprites.setText(Integer.toString(i.developersSprites));
                                         auxDriveMaxSprites = 55; 
-                                        Interfaz.txtMaxDriveSprites.setText(Integer.toString(this.auxDriveMaxSprites));
+                                        i.txtMaxDriveSprites.setText(Integer.toString(this.auxDriveMaxSprites));
                                     }
                                 } while (!aux.equalsIgnoreCase("Developers Sistemas"));
   
@@ -178,10 +180,10 @@ public class CargarArchivo extends javax.swing.JFrame {
                                     aux = bf.readLine();
                                     if (!aux.equalsIgnoreCase("Developers DLC")) {
                                         auxDevelopersSistemas = Integer.parseInt(aux);
-                                        Interfaz.developersSistemas = this.auxDevelopersSistemas;
-                                        Interfaz.txtSistemas.setText(Integer.toString(Interfaz.developersSistemas));
+                                        i.developersSistemas = this.auxDevelopersSistemas;
+                                        i.txtSistemas.setText(Integer.toString(i.developersSistemas));
                                         auxDriveMaxSistemas = 35; 
-                                        Interfaz.txtMaxDriveSistemas.setText(Integer.toString(this.auxDriveMaxSistemas));
+                                        i.txtMaxDriveSistemas.setText(Integer.toString(this.auxDriveMaxSistemas));
                                     }
                                 } while (!aux.equalsIgnoreCase("Developers DLC"));
                                  
@@ -191,10 +193,10 @@ public class CargarArchivo extends javax.swing.JFrame {
                                     aux = bf.readLine();
                                     if (!aux.equalsIgnoreCase("Duracion dia")) {
                                         auxDevelopersDLC = Integer.parseInt(aux);
-                                        Interfaz.developersDLC = this.auxDevelopersDLC;
-                                        Interfaz.txtDLC.setText(Integer.toString(Interfaz.developersDLC));
+                                        i.developersDLC = this.auxDevelopersDLC;
+                                        i.txtDLC.setText(Integer.toString(i.developersDLC));
                                         auxDriveMaxDLC = 10; 
-                                        Interfaz.txtMaxDriveDLC.setText(Integer.toString(this.auxDriveMaxDLC));
+                                        i.txtMaxDriveDLC.setText(Integer.toString(this.auxDriveMaxDLC));
                                     }
                                 } while (!aux.equalsIgnoreCase("Duracion dia"));
                             }
@@ -204,7 +206,7 @@ public class CargarArchivo extends javax.swing.JFrame {
                                     if (!"Dias para Despacho".equalsIgnoreCase(aux)) {
                                      
                                         auxDuracionDia = Integer.parseInt(aux);
-                                        Interfaz.diaDuracion = 1000 * this.auxDuracionDia;
+                                        i.diaDuracion = 1000 * this.auxDuracionDia;
                                     }
                                 } while (!"Dias para Despacho".equalsIgnoreCase(aux));
                             }
@@ -215,9 +217,9 @@ public class CargarArchivo extends javax.swing.JFrame {
                                     if (!"Integradores".equalsIgnoreCase(aux)) {
                                       
                                         auxDiasDespacho = Integer.parseInt(aux);
-                                        Interfaz.diasDespacho = CargarArchivo.auxDiasDespacho;
+                                        i.diasDespacho = CargarArchivo.auxDiasDespacho;
 
-                                        Interfaz.txtDiasDespacho.setText(Integer.toString(Interfaz.diasDespacho));
+                                        i.txtDiasDespacho.setText(Integer.toString(i.diasDespacho));
                                     }
                                 } while (!"Integradores".equalsIgnoreCase(aux));
                             }
@@ -227,8 +229,8 @@ public class CargarArchivo extends javax.swing.JFrame {
                                     if (aux != null) {
                                        
                                         auxIntegradores = Integer.parseInt(aux);
-                                        Interfaz.integrador = this.auxIntegradores;
-                                        Interfaz.txtCantIntegradores.setText(Integer.toString(Interfaz.integrador));
+                                        i.integrador = this.auxIntegradores;
+                                        i.txtCantIntegradores.setText(Integer.toString(i.integrador));
 
                                      }
                                 } while (aux != null);
@@ -288,7 +290,7 @@ public class CargarArchivo extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CargarArchivo().setVisible(true);
+         
             }
         });
     }

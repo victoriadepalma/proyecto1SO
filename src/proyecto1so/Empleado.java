@@ -33,7 +33,8 @@ public class Empleado extends Thread {
     boolean viendoStreams;
     int  gananciasVideojuegoEstandar;
     int gananciasVideojuegoDLC;
-     public Empleado(Semaphore sExclusionGuiones, Semaphore sExclusionNiveles, Semaphore sExclusionSprites, Semaphore sExlusionSistemas,Semaphore sExclusionDLC,Semaphore sEnsambladorGuiones, Semaphore sEnsambladorNiveles, Semaphore sEnsambladorSprites,Semaphore sEnsambladorSistemas, Semaphore sEnsambladorDLC,  Semaphore sDespacho, Semaphore sEmpleado, int tipoEmpleado, String empresa){
+    Interfaz Interfaz;
+     public Empleado(Semaphore sExclusionGuiones, Semaphore sExclusionNiveles, Semaphore sExclusionSprites, Semaphore sExlusionSistemas,Semaphore sExclusionDLC,Semaphore sEnsambladorGuiones, Semaphore sEnsambladorNiveles, Semaphore sEnsambladorSprites,Semaphore sEnsambladorSistemas, Semaphore sEnsambladorDLC,  Semaphore sDespacho, Semaphore sEmpleado, int tipoEmpleado, String empresa, Interfaz Interfaz){
         this.sExclusionGuiones=sExclusionGuiones;
         this.sExclusionNiveles=sExclusionNiveles;
         this.sExclusionNiveles=sExclusionSprites;
@@ -55,6 +56,7 @@ public class Empleado extends Thread {
         this.sueldoDirector=30;
         this.viendoStreams=false;
         this.tipoEmpleado=tipoEmpleado;
+        this.Interfaz=Interfaz;
          if (empresa.equals("Nintendo")) {
           
             this.gananciasVideojuegoEstandar = 550000;

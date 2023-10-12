@@ -18,7 +18,7 @@ public class Proyecto1SO {
         // TODO code application logic here
         //probando
         
-        Interfaz i = new Interfaz();
+        Home i = new Home();
         
 
         i.setLocationRelativeTo(null);

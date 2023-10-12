@@ -43,8 +43,9 @@ public class Integrador extends Thread {
     int contVideos;
     int gananciasVideojuegoEstandar;
     int gananciasVideojuegoDLC;
+    Interfaz Interfaz;
 
-    public Integrador(Semaphore sDriveGuion, Semaphore sDriveNivel, Semaphore sDriveSprite, Semaphore sDriveSistema, Semaphore sDriveDLC, Semaphore sExclusionGuion, Semaphore sExclusionNivel, Semaphore sExclusionSprite, Semaphore sExclusionSistema, Semaphore sExclusionDLC, Semaphore sIntegradorGuiones, Semaphore sIntegradorNivel, Semaphore sIntegradorSprite, Semaphore sIntegradorSistema, Semaphore sIntegradorDLC, int diasEnsam, Semaphore sDespacho, String empresa, boolean hired) {
+    public Integrador(Semaphore sDriveGuion, Semaphore sDriveNivel, Semaphore sDriveSprite, Semaphore sDriveSistema, Semaphore sDriveDLC, Semaphore sExclusionGuion, Semaphore sExclusionNivel, Semaphore sExclusionSprite, Semaphore sExclusionSistema, Semaphore sExclusionDLC, Semaphore sIntegradorGuiones, Semaphore sIntegradorNivel, Semaphore sIntegradorSprite, Semaphore sIntegradorSistema, Semaphore sIntegradorDLC, int diasEnsam, Semaphore sDespacho, String empresa, boolean hired, Interfaz Interfaz) {
         this.sDriveGuion = sDriveGuion;
         this.sDriveNivel = sDriveNivel;
         this.sDriveSprite = sDriveSprite;
@@ -65,6 +66,7 @@ public class Integrador extends Thread {
         this.empresa = empresa;
         this.contVideos = 0;
         this.hired = hired;
+        this.Interfaz=Interfaz;
         if (empresa.equals("Nintendo")) {
             this.cantGuionesEnsamblar = 2;
             this.cantNivelesEnsamblar = 1;

@@ -21,8 +21,9 @@ public class Developer extends Thread {
     float diasProduccion;
     float cantProduccion;
     boolean hired;
+    Interfaz Interfaz;
     
-    public Developer (Semaphore sDrive, Semaphore sExclusion,Semaphore sIntegrador,int tipoDeveloper, int diasProduccion,int cantProduccion, boolean hired ){
+    public Developer (Semaphore sDrive, Semaphore sExclusion,Semaphore sIntegrador,int tipoDeveloper, int diasProduccion,int cantProduccion, boolean hired, Interfaz Interfaz ){
         this.sDrive=sDrive;
         this.sExclusion=sExclusion;
         this.sIntegrador=sIntegrador;
@@ -30,6 +31,7 @@ public class Developer extends Thread {
         this.diasProduccion= (float) diasProduccion;
          this.cantProduccion= (float) cantProduccion;
         this.hired=hired;
+        this.Interfaz=Interfaz;
     
         }
     public void run() {
