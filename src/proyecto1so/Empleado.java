@@ -96,6 +96,8 @@ public class Empleado extends Thread {
                     Interfaz.txtEstadoPM.setText("Modificando contador");
                      Thread.sleep((long)((Interfaz.diaDuracion)/24)*(24-this.horasProjectManager));
                     this.dias=this.dias+1;
+                    Interfaz.txtContadorDias.setText(Integer.toString(this.dias));
+                
                     System.out.println("Finalizacion dia "+this.dias );  
                     if (Interfaz.diasDespacho == 0) {
                             Interfaz.diasDespacho = CargarArchivo.auxDiasDespacho;

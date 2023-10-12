@@ -160,6 +160,10 @@ public class Developer extends Thread {
 //    }
 //   
     
+    public void despedir(){
+        this.hired=false;
+    }
+    
 }
 
 

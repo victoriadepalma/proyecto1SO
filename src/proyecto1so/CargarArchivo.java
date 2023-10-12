@@ -58,6 +58,9 @@ public class CargarArchivo extends javax.swing.JFrame {
         this.setTitle("Archivos");
         this.i=i;
     }
+    
+    
+
 
     
 
@@ -237,6 +240,8 @@ public class CargarArchivo extends javax.swing.JFrame {
                             }
                             aux = bf.readLine();
                         }
+                         this.i.cargado=true;
+                        this.i.home.chequearArchivos();
 
                     } catch (IOException | NumberFormatException e) {
 

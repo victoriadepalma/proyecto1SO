@@ -10,21 +10,45 @@ package proyecto1so;
  * @author victoriadepalma
  */
 public class Home extends javax.swing.JFrame {
-
+    public Interfaz nintendo;
+    public Interfaz capcom;
     /**
      * Creates new form Home
      */
     public Home() {
         initComponents();
-        Interfaz nintendo = new Interfaz("Nintendo");
-        nintendo.setVisible(true);
-        jPanel2.add(nintendo.getContentPane());
+        this.nintendo = new Interfaz("Nintendo",this);
+        this.nintendo.setVisible(true);
+        jPanel2.add(this.nintendo.getContentPane());
         
-         Interfaz capcom = new Interfaz("Capcom");
-        capcom.setVisible(true);
-        jPanel3.add(capcom.getContentPane());
-        
+         this.capcom = new Interfaz("Capcom",this);
+        this.capcom.setVisible(true);
+        jPanel3.add(this.capcom.getContentPane());
     }
+       public void chequearArchivos() {
+    boolean nintendoLoaded = this.nintendo.cargado;
+    boolean capcomLoaded = this.capcom.cargado;
+    
+    if (nintendoLoaded && capcomLoaded) {
+       this.nintendo.setBtnIniciarEnabled(true);
+        this.capcom.setBtnIniciarEnabled(true);
+    } else {
+        this.nintendo.setBtnIniciarEnabled(false);
+        this.capcom.setBtnIniciarEnabled(false);
+    }
+
+}
+       
+          public void start() {
+    boolean nintendoLoaded = this.nintendo.cargado;
+    boolean capcomLoaded = this.capcom.cargado;
+    
+    if (nintendoLoaded && capcomLoaded) {
+       this.nintendo.start();
+        this.capcom.start();
+    } 
+
+}
 
     /**
      * This method is called from within the constructor to initialize the form.

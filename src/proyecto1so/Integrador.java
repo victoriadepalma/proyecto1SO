@@ -234,4 +234,8 @@ public class Integrador extends Thread {
 //        System.out.println("");
 //        System.out.println("-----------");
 //    }
+    
+      public void despedir(){
+        this.hired=false;
+    }
 }
