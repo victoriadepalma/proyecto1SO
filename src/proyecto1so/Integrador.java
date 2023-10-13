@@ -212,6 +212,7 @@ public class Integrador extends Thread {
     public void restarProductoSprites(int n) {
         for (int i = 0; i < n; i++) {
             Interfaz.sprites[Interfaz.spritesE] = 0;
+            
 
             Interfaz.spritesE = (Interfaz.spritesE + 1) % Interfaz.sprites.length;
 
