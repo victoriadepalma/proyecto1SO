@@ -44,6 +44,9 @@ public class Integrador extends Thread {
     int gananciasVideojuegoEstandar;
     int gananciasVideojuegoDLC;
     Interfaz Interfaz;
+    int cantidadParaDLC;
+    
+    
 
     public Integrador(Semaphore sDriveGuion, Semaphore sDriveNivel, Semaphore sDriveSprite, Semaphore sDriveSistema, Semaphore sDriveDLC, Semaphore sExclusionGuion, Semaphore sExclusionNivel, Semaphore sExclusionSprite, Semaphore sExclusionSistema, Semaphore sExclusionDLC, Semaphore sIntegradorGuiones, Semaphore sIntegradorNivel, Semaphore sIntegradorSprite, Semaphore sIntegradorSistema, Semaphore sIntegradorDLC, int diasEnsam, Semaphore sDespacho, String empresa, boolean hired, Interfaz Interfaz) {
         this.sDriveGuion = sDriveGuion;
@@ -73,6 +76,8 @@ public class Integrador extends Thread {
             this.cantSpritesEnsamblar = 4;
             this.cantSistemasEnsamblar = 4;
             this.cantDLCEnsamblar = 2;
+            this.cantidadParaDLC=5;
+            
    
         } else {
             this.cantGuionesEnsamblar = 1;
@@ -80,6 +85,7 @@ public class Integrador extends Thread {
             this.cantSpritesEnsamblar = 6;
             this.cantSistemasEnsamblar = 5;
             this.cantDLCEnsamblar = 1;
+            this.cantidadParaDLC=3;
          
         }
 
@@ -90,7 +96,7 @@ public class Integrador extends Thread {
             try {
               
 
-                if (this.contVideos == 5) {
+                if (this.contVideos == cantidadParaDLC) {
                     this.sExclusionDLC.acquire();
                 }
 
@@ -119,13 +125,13 @@ public class Integrador extends Thread {
                     this.restarProductoSistemas(this.cantSistemasEnsamblar);
                     Interfaz.txtCantSistemas.setText(Integer.toString(Interfaz.cantSistemas));
 
-                    if (this.contVideos == 5) {
+                    if (this.contVideos == cantidadParaDLC) {
                         Interfaz.cantDLC = Interfaz.cantDLC - this.cantDLCEnsamblar;
                         this.restarProductoDLC(this.cantDLCEnsamblar);
                         Interfaz.txtCantSistemas.setText(Integer.toString(Interfaz.cantDLC));
                     }
 
-                    if (this.contVideos == 5) {
+                    if (this.contVideos == cantidadParaDLC) {
                         this.sDriveDLC.release(this.cantDLCEnsamblar);
                     }
 
@@ -142,7 +148,7 @@ public class Integrador extends Thread {
                 this.sExclusionNivel.release();
                 this.sExclusionSprite.release();
                 this.sExclusionSistema.release();
-                if (this.contVideos == 5) {
+                if (this.contVideos == cantidadParaDLC) {
                     this.sExclusionDLC.release();
                 }
 
@@ -153,7 +159,7 @@ public class Integrador extends Thread {
 
                     this.sDespacho.acquire();
                     //Despacha el video juego
-                    if (this.contVideos == 5) {
+                    if (this.contVideos == cantidadParaDLC) {
                         Interfaz.cantVideojuegosDLC = Interfaz.cantVideojuegosDLC + 1;
                         Interfaz.txtVideojuegosDLCListos.setText(Integer.toString(Interfaz.cantVideojuegosDLC));
 //                        System.out.println("Video juego DLC" + Interfaz.cantVideojuegosDLC);
@@ -162,7 +168,7 @@ public class Integrador extends Thread {
                         Interfaz.txtVideojuegosEstandarListos.setText(Integer.toString(Interfaz.cantVideojuegos));
                         //System.out.println("Video juego" + Interfaz.cantVideojuegos);
                     }
-                    if (this.contVideos == 5) {
+                    if (this.contVideos == cantidadParaDLC) {
                         this.contVideos = 0;
                     } else {
                         this.contVideos++;

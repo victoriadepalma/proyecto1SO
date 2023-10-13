@@ -24,6 +24,9 @@ public class CargarArchivo extends javax.swing.JFrame {
     /**
      * Creates new form CargarArchivo
      */
+    
+//    public Interfaz nintendo;
+//    public Interfaz capcom;
     int auxDuracionDia;
     static int auxDiasDespacho;
     
@@ -47,6 +50,8 @@ public class CargarArchivo extends javax.swing.JFrame {
    
     int auxIntegradores;
     
+    
+    
     JFileChooser seleccionado = new JFileChooser();
     File archivo;
     Archivo a = new Archivo();
@@ -57,6 +62,7 @@ public class CargarArchivo extends javax.swing.JFrame {
         this.setResizable(false);
         this.setTitle("Archivos");
         this.i=i;
+
     }
     
     
@@ -252,10 +258,18 @@ public class CargarArchivo extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "Por favor seleccione un archivo de texto");
                 }
                 
-                if ((auxIntegradores + auxDevelopersGuiones + auxDevelopersNiveles + auxDevelopersSprites + auxDevelopersSistemas + auxDevelopersDLC) >= 16){
-                    JOptionPane.showMessageDialog(null, "Error: La suma es mayor o igual a 16", "Error", JOptionPane.ERROR_MESSAGE);
+                if(this.i.empresa=="Capcom"){
+                   if ((auxIntegradores + auxDevelopersGuiones + auxDevelopersNiveles + auxDevelopersSprites + auxDevelopersSistemas + auxDevelopersDLC) > 16) {
+                    JOptionPane.showMessageDialog(null, "Error: La suma es mayor  a 16", "Error", JOptionPane.ERROR_MESSAGE);
                     
+                }  
+                }else{
+                    if ((auxIntegradores + auxDevelopersGuiones + auxDevelopersNiveles + auxDevelopersSprites + auxDevelopersSistemas + auxDevelopersDLC) > 11) {
+                    JOptionPane.showMessageDialog(null, "Error: La suma es mayor  a 11", "Error", JOptionPane.ERROR_MESSAGE);
+                    
+                }    
                 }
+               
 
             }
 

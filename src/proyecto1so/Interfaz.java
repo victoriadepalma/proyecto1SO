@@ -558,7 +558,6 @@ public class Interfaz extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -586,7 +585,6 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
         txtGuiones = new javax.swing.JTextField();
         txtNiveles = new javax.swing.JTextField();
         txtSprites = new javax.swing.JTextField();
@@ -633,14 +631,6 @@ public class Interfaz extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(null);
-
-        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setFont(new java.awt.Font("Futura", 1, 13)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("N. Desarrolladores");
-        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jLabel1);
-        jLabel1.setBounds(480, 230, 140, 18);
 
         jLabel2.setFont(new java.awt.Font("Futura", 1, 13)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -797,16 +787,6 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel24.setText("Dinero descontado PM");
         jPanel1.add(jLabel24);
         jLabel24.setBounds(530, 170, 156, 18);
-
-        jTextField7.setFont(new java.awt.Font("Futura", 1, 13)); // NOI18N
-        jTextField7.setForeground(new java.awt.Color(204, 51, 255));
-        jTextField7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField7ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jTextField7);
-        jTextField7.setBounds(630, 230, 50, 20);
 
         txtGuiones.setFont(new java.awt.Font("Futura", 1, 13)); // NOI18N
         txtGuiones.setForeground(new java.awt.Color(204, 51, 255));
@@ -1179,10 +1159,6 @@ public class Interfaz extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMaxDriveGuionesActionPerformed
 
-    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField7ActionPerformed
-
     private void txtEstadoPMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEstadoPMActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEstadoPMActionPerformed
@@ -1322,7 +1298,6 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JButton despedirNivel;
     private javax.swing.JButton despedirSistema;
     private javax.swing.JButton despedirSprite;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -1351,7 +1326,6 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    public javax.swing.JTextField jTextField7;
     public javax.swing.JTextField txtCantDLC;
     public javax.swing.JTextField txtCantFaltasPM;
     public javax.swing.JTextField txtCantGuiones;

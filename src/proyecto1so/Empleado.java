@@ -185,7 +185,7 @@ public class Empleado extends Thread {
                         
                     
                     Interfaz.sueldoDeveloperGuiones+=10*(Interfaz.developersGuiones);
-                       // System.out.println("guiones sueldo: "+ Interfaz.sueldoDeveloperGuiones);
+                        System.out.println("GUIONES sueldo: "+ Interfaz.sueldoDeveloperGuiones);
                     Interfaz.sueldoDeveloperNiveles+=13*(Interfaz.developersNiveles);
                         //System.out.println("niveles sueldo: "+ Interfaz.sueldoDeveloperNiveles);
                     Interfaz.sueldoDeveloperSprites+=20*(Interfaz.developersSprites);
