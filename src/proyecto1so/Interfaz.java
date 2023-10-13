@@ -1211,33 +1211,33 @@ public class Interfaz extends javax.swing.JFrame {
 
     private void contratarGuionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contratarGuionActionPerformed
         // TODO add your handling code here:
-        contratarProductor(this.developerGuiones, this.developersGuiones - 1, 1, 16);
+        contratarProductor(this.developerGuiones, this.developersGuiones, 1, 16);
     }//GEN-LAST:event_contratarGuionActionPerformed
 
     private void contratarSpriteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contratarSpriteActionPerformed
         // TODO add your handling code here:
-        contratarProductor(this.developerSprites, this.developersSprites - 1, 3, 16);
+        contratarProductor(this.developerSprites, this.developersSprites, 3, 16);
     }//GEN-LAST:event_contratarSpriteActionPerformed
 
     private void contratarSistemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contratarSistemaActionPerformed
         // TODO add your handling code here:
-        contratarProductor(this.developerSistemas, this.developersSistemas - 1, 4, 16);
+        contratarProductor(this.developerSistemas, this.developersSistemas, 4, 16);
     }//GEN-LAST:event_contratarSistemaActionPerformed
 
     private void contratarNivelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contratarNivelActionPerformed
         // TODO add your handling code here:
-        contratarProductor(this.developerNiveles, this.developersNiveles - 1, 2, 16);
+        contratarProductor(this.developerNiveles, this.developersNiveles, 2, 16);
     }//GEN-LAST:event_contratarNivelActionPerformed
 
     private void contratarDLCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contratarDLCActionPerformed
         // TODO add your handling code here:
-        contratarProductor(this.developerDLC, this.developersDLC - 1, 5, 16);
+        contratarProductor(this.developerDLC, this.developersDLC, 5, 16);
     }//GEN-LAST:event_contratarDLCActionPerformed
 
     private void contratarIntegradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contratarIntegradorActionPerformed
         // TODO add your handling code here:
 
-        contratarIntegradores(this.integradores, this.integrador - 1);
+        contratarIntegradores(this.integradores, this.integrador);
     }//GEN-LAST:event_contratarIntegradorActionPerformed
 
     private void despedirGuionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_despedirGuionActionPerformed
