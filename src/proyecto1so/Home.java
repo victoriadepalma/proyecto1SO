@@ -12,6 +12,7 @@ package proyecto1so;
 public class Home extends javax.swing.JFrame {
     public Interfaz nintendo;
     public Interfaz capcom;
+    public Chart chart;
     /**
      * Creates new form Home
      */
@@ -19,11 +20,21 @@ public class Home extends javax.swing.JFrame {
         initComponents();
         this.nintendo = new Interfaz("Nintendo",this);
         this.nintendo.setVisible(true);
-        jPanel2.add(this.nintendo.getContentPane());
-        
          this.capcom = new Interfaz("Capcom",this);
         this.capcom.setVisible(true);
         jPanel3.add(this.capcom.getContentPane());
+        
+        jPanel2.add(this.nintendo.getContentPane());
+        
+        this.chart = new Chart(this.nintendo,this.capcom);
+        this.chart.setVisible(true);
+        jPanel4.add(this.chart.getContentPane());
+        
+        this.nintendo.chart=this.chart;
+        this.capcom.chart=this.chart;
+        
+       
+        
     }
        public void chequearArchivos() {
     boolean nintendoLoaded = this.nintendo.cargado;
@@ -60,12 +71,25 @@ public class Home extends javax.swing.JFrame {
     private void initComponents() {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel3 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(900, 500));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 888, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 552, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Capcom", jPanel3);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -97,18 +121,18 @@ public class Home extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Nintendo", jPanel1);
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 888, Short.MAX_VALUE)
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 552, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("Capcom", jPanel3);
+        jTabbedPane1.addTab("Grafica", jPanel4);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -169,6 +193,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
 }

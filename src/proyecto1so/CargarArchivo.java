@@ -252,9 +252,17 @@ public class CargarArchivo extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "Por favor seleccione un archivo de texto");
                 }
                 
-                if ((auxIntegradores + auxDevelopersGuiones + auxDevelopersNiveles + auxDevelopersSprites + auxDevelopersSistemas + auxDevelopersDLC) >= 16){
-                    JOptionPane.showMessageDialog(null, "Error: La suma es mayor o igual a 16", "Error", JOptionPane.ERROR_MESSAGE);
+               if(this.i.empresa=="Capcom"){
+                   if ((auxIntegradores + auxDevelopersGuiones + auxDevelopersNiveles + auxDevelopersSprites + auxDevelopersSistemas + auxDevelopersDLC + auxIntegradores) > 16) {
+                    JOptionPane.showMessageDialog(null, "Error: La suma es mayor  a 16", "Error", JOptionPane.ERROR_MESSAGE);
                     
+                }  
+                }else{
+                    if ((auxIntegradores + auxDevelopersGuiones + auxDevelopersNiveles + auxDevelopersSprites + auxDevelopersSistemas + auxDevelopersDLC + auxIntegradores) > 11) {
+                    JOptionPane.showMessageDialog(null, "Error: La suma es mayor  a 11", "Error", JOptionPane.ERROR_MESSAGE);
+                    
+                }    
+                
                 }
 
             }

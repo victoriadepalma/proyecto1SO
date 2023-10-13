@@ -1,0 +1,216 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package proyecto1so;
+
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.axis.NumberAxis;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.xy.DefaultXYDataset;
+import javax.swing.*;
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+/**
+ *
+ * @author victoriadepalma
+ */
+public class Chart extends javax.swing.JFrame {
+
+    Interfaz nintendo;
+    Interfaz capcom;
+    double[] xValues;
+    double[] yValues1;
+    double[] yValues2;
+    DefaultXYDataset dataset;
+    ChartPanel chartPanel;
+
+    public Chart(Interfaz nintendo, Interfaz capcom) {
+        initComponents();
+        this.nintendo = nintendo;
+        this.capcom = capcom;
+
+        dataset = new DefaultXYDataset();
+
+        // Data for Company 1
+        double[][] company1Data = {{0}, {0}};
+        dataset.addSeries("Nintendo", company1Data);
+
+        // Data for Company 2
+        double[][] company2Data = {{0}, {0}};
+        dataset.addSeries("Capcom", company2Data);
+
+        // Create the chart
+        JFreeChart chart = ChartFactory.createXYLineChart(
+                "Money Flow Over Time",
+                "Time",
+                "Money",
+                dataset,
+                PlotOrientation.VERTICAL,
+                true,
+                true,
+                false
+        );
+
+        // Customize the x-axis to display integers
+        NumberAxis xAxis = (NumberAxis) chart.getXYPlot().getDomainAxis();
+        xAxis.setStandardTickUnits(NumberAxis.createIntegerTickUnits());
+
+        // Create the chart panel
+        chartPanel = new ChartPanel(chart);
+
+        // Create the panel to hold the chart panel
+        jPanel1.setLayout(new BorderLayout());
+        jPanel1.add(chartPanel, BorderLayout.CENTER);
+
+        // Refresh the existing JFrame to reflect the changes
+        this.revalidate();
+        this.repaint();
+
+//         JFreeChart chart = createChart();
+//
+//        // Create a chart panel and add it to the JFrame
+//        ChartPanel chartPanel = new ChartPanel(chart);
+//        getContentPane().add(chartPanel);
+        /**
+         * Creates new form Chart
+         */
+    }
+
+    public void addValues() {
+        double[] xValues = {Integer.parseInt(this.nintendo.txtContadorDias.getText())};
+        double[] yValues1 = {this.nintendo.utilidadEmpresa};
+        double[] yValues2 = {this.capcom.utilidadEmpresa};
+
+        // Add the new values to the dataset
+        // Get the existing series data
+        int seriesIndex1 = dataset.indexOf("Nintendo");
+        int itemCount1 = dataset.getItemCount(seriesIndex1);
+        double[][] existingData1 = new double[2][itemCount1];
+        for (int i = 0; i < itemCount1; i++) {
+            existingData1[0][i] = dataset.getXValue(seriesIndex1, i);
+            existingData1[1][i] = dataset.getYValue(seriesIndex1, i);
+        }
+
+        int seriesIndex2 = dataset.indexOf("Capcom");
+        int itemCount2 = dataset.getItemCount(seriesIndex2);
+        double[][] existingData2 = new double[2][itemCount2];
+        for (int i = 0; i < itemCount2; i++) {
+            existingData2[0][i] = dataset.getXValue(seriesIndex2, i);
+            existingData2[1][i] = dataset.getYValue(seriesIndex2, i);
+        }
+
+        // Create updated series data
+       List<double[]> updatedData1 = new ArrayList<>(Arrays.asList(existingData1));
+      
+      List<double[]> updatedData2 = new ArrayList<>(Arrays.asList(existingData2));
+      
+
+        updatedData1.set(0, Arrays.copyOf(updatedData1.get(0), updatedData1.get(0).length + 1));
+        updatedData1.set(1, Arrays.copyOf(updatedData1.get(1), updatedData1.get(1).length + 1));
+        updatedData1.get(0)[updatedData1.get(0).length - 1] = xValues[0];
+        updatedData1.get(1)[updatedData1.get(1).length - 1] = yValues1[0];
+        updatedData2.set(0, Arrays.copyOf(updatedData2.get(0), updatedData2.get(0).length + 1));
+        updatedData2.set(1, Arrays.copyOf(updatedData2.get(1), updatedData2.get(1).length + 1));
+        updatedData2.get(0)[updatedData2.get(0).length - 1] = xValues[0];
+        updatedData2.get(1)[updatedData2.get(1).length - 1] = yValues2[0];
+
+        // Update the dataset with the updated series data
+        dataset.removeSeries("Nintendo");
+        dataset.addSeries("Nintendo", updatedData1.toArray(new double[0][]));
+        dataset.removeSeries("Capcom");
+        dataset.addSeries("Capcom", updatedData2.toArray(new double[0][]));
+
+    }
+
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        jPanel1 = new javax.swing.JPanel();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 586, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 355, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Chart.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Chart.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Chart.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Chart.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                Interfaz nintendo = new Interfaz("Nintendo", null);  // Replace 'null' with the appropriate argument
+                Interfaz capcom = new Interfaz("Capcom", null);
+                new Chart(nintendo, capcom).setVisible(true);
+            }
+        });
+    }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel jPanel1;
+    // End of variables declaration//GEN-END:variables
+}

@@ -28,13 +28,14 @@ public class Interfaz extends javax.swing.JFrame {
     Empleado projectManager;
     Empleado director;
     Home home;
+    Chart chart;
 
     //Booleano para que si ya cargue un archivo no me deje cargar otro
     boolean cargado;
 
     public int maxTrabajadores;
 
-    //Vectores Almacen de cada Producto
+    //Vectores drive de cada Producto
     public int[] guiones;
     public int[] niveles;
     public int[] sprites;
@@ -527,8 +528,8 @@ public class Interfaz extends javax.swing.JFrame {
             this.sprites = new int[this.spritesDrive];
             this.sistemas = new int[this.sistemasDrive];
             this.dlc = new int[this.dlcDrive];
-            this.projectManager = new Empleado(this.exclusionGuiones, this.exclusionNiveles, this.exclusionSprites, this.exclusionSistemas, this.exclusionDLC, this.integradorGuiones, this.integradorNiveles, this.integradorSprites, this.integradorSistemas, this.integradorDLC, this.sDespacho, this.sEmpleado, 1, this.empresa, this);
-            this.director = new Empleado(this.exclusionGuiones, this.exclusionNiveles, this.exclusionSprites, this.exclusionSistemas, this.exclusionDLC, this.integradorGuiones, this.integradorNiveles, this.integradorSprites, this.integradorSistemas, this.integradorDLC, this.sDespacho, this.sEmpleado, 2, this.empresa, this);
+            this.projectManager = new Empleado(this.exclusionGuiones, this.exclusionNiveles, this.exclusionSprites, this.exclusionSistemas, this.exclusionDLC, this.integradorGuiones, this.integradorNiveles, this.integradorSprites, this.integradorSistemas, this.integradorDLC, this.sDespacho, this.sEmpleado, 1, this.empresa, this,chart);
+            this.director = new Empleado(this.exclusionGuiones, this.exclusionNiveles, this.exclusionSprites, this.exclusionSistemas, this.exclusionDLC, this.integradorGuiones, this.integradorNiveles, this.integradorSprites, this.integradorSistemas, this.integradorDLC, this.sDespacho, this.sEmpleado, 2, this.empresa, this,chart);
             this.inicializarDrives(this.guiones);
             this.inicializarDrives(this.niveles);
             this.inicializarDrives(this.sprites);
@@ -638,7 +639,7 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Futura", 1, 13)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("N. Desarrolladores");
-        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel1.add(jLabel1);
         jLabel1.setBounds(480, 230, 140, 18);
 
@@ -727,12 +728,12 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
         jPanel1.add(txtCantGuiones);
-        txtCantGuiones.setBounds(210, 230, 40, 24);
+        txtCantGuiones.setBounds(210, 230, 40, 30);
 
         txtCantNiveles.setFont(new java.awt.Font("Futura", 1, 13)); // NOI18N
         txtCantNiveles.setForeground(new java.awt.Color(204, 51, 255));
         jPanel1.add(txtCantNiveles);
-        txtCantNiveles.setBounds(210, 260, 40, 24);
+        txtCantNiveles.setBounds(210, 260, 40, 30);
 
         txtCantSprites.setFont(new java.awt.Font("Futura", 1, 13)); // NOI18N
         txtCantSprites.setForeground(new java.awt.Color(204, 51, 255));
@@ -742,17 +743,17 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
         jPanel1.add(txtCantSprites);
-        txtCantSprites.setBounds(210, 290, 40, 24);
+        txtCantSprites.setBounds(210, 290, 40, 30);
 
         txtCantSistemas.setFont(new java.awt.Font("Futura", 1, 13)); // NOI18N
         txtCantSistemas.setForeground(new java.awt.Color(204, 51, 255));
         jPanel1.add(txtCantSistemas);
-        txtCantSistemas.setBounds(210, 320, 40, 24);
+        txtCantSistemas.setBounds(210, 320, 40, 30);
 
         txtCantDLC.setFont(new java.awt.Font("Futura", 1, 13)); // NOI18N
         txtCantDLC.setForeground(new java.awt.Color(204, 51, 255));
         jPanel1.add(txtCantDLC);
-        txtCantDLC.setBounds(210, 350, 40, 24);
+        txtCantDLC.setBounds(210, 350, 40, 30);
 
         jLabel17.setFont(new java.awt.Font("Futura", 1, 13)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
@@ -836,7 +837,7 @@ public class Interfaz extends javax.swing.JFrame {
         txtDLC.setFont(new java.awt.Font("Futura", 1, 13)); // NOI18N
         txtDLC.setForeground(new java.awt.Color(204, 51, 255));
         jPanel1.add(txtDLC);
-        txtDLC.setBounds(630, 380, 50, 24);
+        txtDLC.setBounds(630, 380, 50, 30);
 
         txtCostoEmpresa.setFont(new java.awt.Font("Futura", 1, 12)); // NOI18N
         txtCostoEmpresa.setForeground(new java.awt.Color(204, 51, 255));
@@ -874,7 +875,7 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
         jPanel1.add(txtVideojuegosEstandarListos);
-        txtVideojuegosEstandarListos.setBounds(560, 20, 80, 24);
+        txtVideojuegosEstandarListos.setBounds(560, 20, 80, 30);
 
         txtVideojuegosDLCListos.setFont(new java.awt.Font("Futura", 1, 13)); // NOI18N
         txtVideojuegosDLCListos.setForeground(new java.awt.Color(204, 51, 255));
@@ -894,7 +895,7 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
         jPanel1.add(txtDiasDespacho);
-        txtDiasDespacho.setBounds(380, 410, 70, 24);
+        txtDiasDespacho.setBounds(380, 410, 70, 30);
 
         txtEstadoPM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -925,7 +926,7 @@ public class Interfaz extends javax.swing.JFrame {
         txtCantIntegradores.setFont(new java.awt.Font("Futura", 1, 13)); // NOI18N
         txtCantIntegradores.setForeground(new java.awt.Color(204, 51, 255));
         jPanel1.add(txtCantIntegradores);
-        txtCantIntegradores.setBounds(630, 410, 50, 24);
+        txtCantIntegradores.setBounds(630, 410, 50, 30);
 
         btnIniciar.setText("INICIAR");
         btnIniciar.addActionListener(new java.awt.event.ActionListener() {
@@ -934,7 +935,7 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnIniciar);
-        btnIniciar.setBounds(70, 40, 74, 23);
+        btnIniciar.setBounds(70, 40, 70, 27);
 
         btnCargar.setText("CARGAR");
         btnCargar.addActionListener(new java.awt.event.ActionListener() {
@@ -943,7 +944,7 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnCargar);
-        btnCargar.setBounds(160, 40, 83, 23);
+        btnCargar.setBounds(160, 40, 77, 27);
 
         jLabel26.setFont(new java.awt.Font("Futura", 1, 13)); // NOI18N
         jLabel26.setForeground(new java.awt.Color(255, 255, 255));
@@ -959,7 +960,7 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
         jPanel1.add(txtMaxDriveGuiones);
-        txtMaxDriveGuiones.setBounds(280, 230, 40, 24);
+        txtMaxDriveGuiones.setBounds(280, 230, 40, 30);
 
         txtMaxDriveNiveles.setFont(new java.awt.Font("Futura", 1, 13)); // NOI18N
         txtMaxDriveNiveles.setForeground(new java.awt.Color(204, 51, 255));
@@ -969,12 +970,12 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
         jPanel1.add(txtMaxDriveNiveles);
-        txtMaxDriveNiveles.setBounds(280, 260, 40, 24);
+        txtMaxDriveNiveles.setBounds(280, 260, 40, 30);
 
         txtMaxDriveSprites.setFont(new java.awt.Font("Futura", 1, 13)); // NOI18N
         txtMaxDriveSprites.setForeground(new java.awt.Color(204, 51, 255));
         jPanel1.add(txtMaxDriveSprites);
-        txtMaxDriveSprites.setBounds(280, 290, 40, 24);
+        txtMaxDriveSprites.setBounds(280, 290, 40, 30);
 
         despedirNivel.setText("-");
         despedirNivel.addActionListener(new java.awt.event.ActionListener() {
@@ -983,7 +984,7 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
         jPanel1.add(despedirNivel);
-        despedirNivel.setBounds(720, 290, 20, 23);
+        despedirNivel.setBounds(720, 290, 20, 27);
 
         contratarSprite.setText("+");
         contratarSprite.addActionListener(new java.awt.event.ActionListener() {
@@ -992,7 +993,7 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
         jPanel1.add(contratarSprite);
-        contratarSprite.setBounds(690, 320, 20, 23);
+        contratarSprite.setBounds(690, 320, 20, 27);
 
         contratarSistema.setText("+");
         contratarSistema.addActionListener(new java.awt.event.ActionListener() {
@@ -1001,7 +1002,7 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
         jPanel1.add(contratarSistema);
-        contratarSistema.setBounds(690, 350, 20, 23);
+        contratarSistema.setBounds(690, 350, 20, 27);
 
         contratarGuion.setText("+");
         contratarGuion.addActionListener(new java.awt.event.ActionListener() {
@@ -1010,7 +1011,7 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
         jPanel1.add(contratarGuion);
-        contratarGuion.setBounds(690, 260, 20, 23);
+        contratarGuion.setBounds(690, 260, 20, 27);
 
         contratarDLC.setText("+");
         contratarDLC.addActionListener(new java.awt.event.ActionListener() {
@@ -1019,7 +1020,7 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
         jPanel1.add(contratarDLC);
-        contratarDLC.setBounds(690, 380, 20, 23);
+        contratarDLC.setBounds(690, 380, 20, 27);
 
         contratarIntegrador.setText("+");
         contratarIntegrador.addActionListener(new java.awt.event.ActionListener() {
@@ -1028,7 +1029,7 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
         jPanel1.add(contratarIntegrador);
-        contratarIntegrador.setBounds(690, 410, 20, 23);
+        contratarIntegrador.setBounds(690, 410, 20, 27);
 
         contratarNivel.setText("+");
         contratarNivel.addActionListener(new java.awt.event.ActionListener() {
@@ -1037,7 +1038,7 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
         jPanel1.add(contratarNivel);
-        contratarNivel.setBounds(690, 290, 20, 23);
+        contratarNivel.setBounds(690, 290, 20, 27);
 
         despedirSprite.setText("-");
         despedirSprite.addActionListener(new java.awt.event.ActionListener() {
@@ -1046,7 +1047,7 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
         jPanel1.add(despedirSprite);
-        despedirSprite.setBounds(720, 320, 20, 23);
+        despedirSprite.setBounds(720, 320, 20, 27);
 
         despedirSistema.setText("-");
         despedirSistema.addActionListener(new java.awt.event.ActionListener() {
@@ -1055,7 +1056,7 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
         jPanel1.add(despedirSistema);
-        despedirSistema.setBounds(720, 350, 20, 23);
+        despedirSistema.setBounds(720, 350, 20, 27);
 
         despedirDLC.setText("-");
         despedirDLC.addActionListener(new java.awt.event.ActionListener() {
@@ -1064,7 +1065,7 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
         jPanel1.add(despedirDLC);
-        despedirDLC.setBounds(720, 380, 20, 23);
+        despedirDLC.setBounds(720, 380, 20, 27);
 
         despedirIntegrador.setText("-");
         despedirIntegrador.addActionListener(new java.awt.event.ActionListener() {
@@ -1073,7 +1074,7 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
         jPanel1.add(despedirIntegrador);
-        despedirIntegrador.setBounds(720, 410, 20, 23);
+        despedirIntegrador.setBounds(720, 410, 20, 27);
 
         despedirGuion.setText("-");
         despedirGuion.addActionListener(new java.awt.event.ActionListener() {
@@ -1082,17 +1083,17 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
         jPanel1.add(despedirGuion);
-        despedirGuion.setBounds(720, 260, 20, 23);
+        despedirGuion.setBounds(720, 260, 20, 27);
 
         txtMaxDriveSistemas.setFont(new java.awt.Font("Futura", 1, 13)); // NOI18N
         txtMaxDriveSistemas.setForeground(new java.awt.Color(204, 51, 255));
         jPanel1.add(txtMaxDriveSistemas);
-        txtMaxDriveSistemas.setBounds(280, 320, 40, 24);
+        txtMaxDriveSistemas.setBounds(280, 320, 40, 30);
 
         txtMaxDriveDLC.setFont(new java.awt.Font("Futura", 1, 13)); // NOI18N
         txtMaxDriveDLC.setForeground(new java.awt.Color(204, 51, 255));
         jPanel1.add(txtMaxDriveDLC);
-        txtMaxDriveDLC.setBounds(280, 350, 40, 24);
+        txtMaxDriveDLC.setBounds(280, 350, 40, 30);
 
         txtContadorDias.setFont(new java.awt.Font("Futura", 1, 13)); // NOI18N
         txtContadorDias.setForeground(new java.awt.Color(204, 51, 255));
@@ -1102,7 +1103,7 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
         jPanel1.add(txtContadorDias);
-        txtContadorDias.setBounds(210, 410, 60, 24);
+        txtContadorDias.setBounds(210, 410, 60, 30);
 
         jLabel27.setFont(new java.awt.Font("Futura", 1, 13)); // NOI18N
         jLabel27.setForeground(new java.awt.Color(255, 255, 255));

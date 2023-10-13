@@ -34,7 +34,8 @@ public class Empleado extends Thread {
     int  gananciasVideojuegoEstandar;
     int gananciasVideojuegoDLC;
     Interfaz Interfaz;
-     public Empleado(Semaphore sExclusionGuiones, Semaphore sExclusionNiveles, Semaphore sExclusionSprites, Semaphore sExlusionSistemas,Semaphore sExclusionDLC,Semaphore sEnsambladorGuiones, Semaphore sEnsambladorNiveles, Semaphore sEnsambladorSprites,Semaphore sEnsambladorSistemas, Semaphore sEnsambladorDLC,  Semaphore sDespacho, Semaphore sEmpleado, int tipoEmpleado, String empresa, Interfaz Interfaz){
+    Chart chart;
+     public Empleado(Semaphore sExclusionGuiones, Semaphore sExclusionNiveles, Semaphore sExclusionSprites, Semaphore sExlusionSistemas,Semaphore sExclusionDLC,Semaphore sEnsambladorGuiones, Semaphore sEnsambladorNiveles, Semaphore sEnsambladorSprites,Semaphore sEnsambladorSistemas, Semaphore sEnsambladorDLC,  Semaphore sDespacho, Semaphore sEmpleado, int tipoEmpleado, String empresa, Interfaz Interfaz,Chart chart){
         this.sExclusionGuiones=sExclusionGuiones;
         this.sExclusionNiveles=sExclusionNiveles;
         this.sExclusionNiveles=sExclusionSprites;
@@ -57,6 +58,7 @@ public class Empleado extends Thread {
         this.viendoStreams=false;
         this.tipoEmpleado=tipoEmpleado;
         this.Interfaz=Interfaz;
+        this.chart=chart;
          if (empresa.equals("Nintendo")) {
           
             this.gananciasVideojuegoEstandar = 550000;
@@ -97,6 +99,10 @@ public class Empleado extends Thread {
                      Thread.sleep((long)((Interfaz.diaDuracion)/24)*(24-this.horasProjectManager));
                     this.dias=this.dias+1;
                     Interfaz.txtContadorDias.setText(Integer.toString(this.dias));
+                    if(Interfaz.empresa=="Nintendo"){
+                      this.chart.addValues();  
+                    }
+                    
                 
                     System.out.println("Finalizacion dia "+this.dias );  
                     if (Interfaz.diasDespacho == 0) {
